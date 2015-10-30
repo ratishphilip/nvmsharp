@@ -1,5 +1,5 @@
 # nvmsharp
-NVM# is a Windows 10 desktop app which provides an effective way of managing the environment variables. 
+NVM# is a Windows 10 desktop app (.Net 4.6) which provides an effective way of managing the environment variables. 
 
 Managing environment variables has been a tedious task since the early days of Windows. Windows 10 offers very little improvement on the way environment variables were managed (till Windows 8.1). However, I feel that the users should be provided with a better user experience for managing the environment variables. I strongly recommend that environment variables management be added to the Settings app in Windows 10 (coz that's where all the Control Panel features are going to be ultimately)
 
