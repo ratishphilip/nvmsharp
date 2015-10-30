@@ -1,0 +1,146 @@
+﻿<wpfSpark:SparkWindow x:Class="NVMSharp.Views.EditWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:local="clr-namespace:NVMSharp.Views"
+                      xmlns:wpfSpark="clr-namespace:WPFSpark"
+                      SizeToContent="Height"
+                      mc:Ignorable="d"
+                      Height="150"
+                      Width="700"
+                      FontSize="14"
+                      ShowInTaskbar="False"
+                      WindowStartupLocation="CenterOwner"
+                      WindowStyle="None"
+                      Background="#DBE6ECF0"
+                      Title="{Binding ModificationTitle}"
+                      TitleMargin="4,0,0,0"
+                      TitleBackground="Transparent"
+                      MinWidth="400"
+                      MinHeight="100"
+                      WindowFrameMode="ChildWindow"
+                      SystemForeground="Black"
+                      SystemBackground="Transparent"
+                      SystemBorderBrush="Transparent"
+                      SystemBorderThickness="0"
+                      SystemMouseOverForeground="White"
+                      SystemMouseOverBackground="#770276FD"
+                      SystemMouseOverBorderBrush="#0276FD"
+                      SystemPressedForeground="White"
+                      SystemPressedBackground="#0276FD"
+                      SystemPressedBorderBrush="#0276FD"
+                      SystemPressedBorderThickness="1">
+    <wpfSpark:SparkWindow.Resources>
+        <!--<ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/NVMSharp;component/Resources/Styles/Button.Dark.Styles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>-->
+    </wpfSpark:SparkWindow.Resources>
+    <!--<wpfSpark:SparkWindow.TitleContent>
+        <TextBlock Foreground="Black"
+                   VerticalAlignment="Center"
+                   FontWeight="DemiBold"
+                   FontSize="16"
+                   Text="{Binding ModificationTitle}"></TextBlock>
+    </wpfSpark:SparkWindow.TitleContent>-->
+    <wpfSpark:SparkWindow.TitleEffect>
+        <DropShadowEffect BlurRadius="6"
+                          Color="#E6ECF0"
+                          Direction="-45"
+                          ShadowDepth="2"
+                          RenderingBias="Quality"></DropShadowEffect>
+    </wpfSpark:SparkWindow.TitleEffect>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="48"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid x:Name="inputGrid"
+              Background="#EEFFFFFF">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48"></RowDefinition>
+                <RowDefinition Height="48"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Variable vame :"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="8,0,4,0"></TextBlock>
+            <TextBox x:Name="nameBox"
+                     Grid.Column="1"
+                     Margin="8,0"
+                     Height="30"
+                     TextChanged="HandleUserInput"
+                     VerticalContentAlignment="Center"
+                     Text="{Binding ModifiedKey, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBlock Grid.Row="1"
+                       Text="Variable value :"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="8,0,4,0"></TextBlock>
+            <Grid Grid.Row="1"
+                  Grid.Column="1"
+                  Margin="8,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="36"></ColumnDefinition>
+                    <ColumnDefinition Width="36"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="valueBox"
+                         Margin="0,0,8,0"
+                         Height="30"
+                         TextChanged="HandleUserInput"
+                         VerticalContentAlignment="Center"
+                         Text="{Binding ModifiedValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <Button Grid.Column="1"
+                        Content="&#xE7C3;"
+                        Width="32"
+                        Height="32"
+                        Style="{DynamicResource IconGlyph.Dark.ButtonStyle}"
+                        ToolTip="Browse For File..."
+                        Click="OnBrowseForFile" />
+                <Button Grid.Column="2"
+                        Content="&#xE8B7;"
+                        Width="32"
+                        Height="32"
+                        Style="{DynamicResource IconGlyph.Dark.ButtonStyle}"
+                        ToolTip="Browse For Folder..."
+                        Click="OnBrowseForFolder" />
+            </Grid>
+        </Grid>
+
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <Button x:Name="saveBtn"
+                    Width="100"
+                    Height="32"
+                    Content="Save"
+                    IsDefault="true"
+                    Click="OnSave"
+                    Margin="8,0"></Button>
+            <Button Width="100"
+                    Height="32"
+                    Content="Cancel"
+                    IsCancel="true"
+                    Margin="8,0,8,0"></Button>
+        </StackPanel>
+
+        <TextBlock x:Name="validationText"
+                   Grid.Row="1"
+                   Foreground="Red"
+                   FontStyle="Italic"
+                   FontWeight="DemiBold"
+                   IsHitTestVisible="False"
+                   Margin="8,0,230,0"
+                   VerticalAlignment="Center"
+                   FontSize="16"
+                   Text="{Binding ValidationMessage}"></TextBlock>
+                   
+    </Grid>
+</wpfSpark:SparkWindow>

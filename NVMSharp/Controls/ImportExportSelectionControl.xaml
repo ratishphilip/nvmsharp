@@ -1,0 +1,82 @@
+﻿<UserControl x:Class="NVMSharp.Controls.ImportExportSelectionControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:NVMSharp.Controls"
+             xmlns:converters="clr-namespace:NVMSharp.Converters"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+    <UserControl.Resources>
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityHelper"></converters:BooleanToVisibilityConverter>
+        <DataTemplate x:Key="ItemDataTemplate">
+            <Grid Height="48">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="16"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="48"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Border Grid.RowSpan="2"
+                        Background="#225E6971"></Border>
+                <CheckBox Grid.Row="0"
+                          Grid.Column="0"
+                          Grid.RowSpan="2"
+                          x:Name="checkbox"
+                          Style="{DynamicResource CheckBox.Dark.Style}"
+                          IsChecked="{Binding Path=IsSelected}" />
+                <StackPanel Grid.Row="0"
+                            Grid.Column="1"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="16"
+                               FontWeight="DemiBold"
+                               VerticalAlignment="Center"
+                               Foreground="Red"
+                               Margin="4,0,0,0"
+                               Text="&#xE1F5;"
+                               Style="{StaticResource IconGlyph.Dark.TextBlockStyle}"
+                               Visibility="{Binding Path=HasConflict, Converter={StaticResource BooleanToVisibilityHelper}}"></TextBlock>
+                    <TextBlock FontSize="16"
+                               FontWeight="DemiBold"
+                               VerticalAlignment="Center"
+                               Margin="4,0"
+                               Text="{Binding Key}"></TextBlock>
+                </StackPanel>
+                <TextBlock Grid.Row="1"
+                           Grid.Column="1"
+                           FontSize="12"
+                           FontStyle="Italic"
+                           Margin="4,-4,4,4"
+                           VerticalAlignment="Center"
+                           Text="{Binding Data}"
+                           TextTrimming="CharacterEllipsis"></TextBlock>
+
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Expander Style="{DynamicResource Expander.Dark.Style}"
+              IsExpanded="True">
+        <Expander.Header>
+            <CheckBox x:Name="HeaderCB"
+                      Content="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Header}"
+                      Style="{DynamicResource CheckBox.Dark.Style}"
+                      Checked="HandleHeaderSelection"
+                      Unchecked="HandleHeaderSelection"></CheckBox>
+        </Expander.Header>
+        <Expander.Content>
+            <ListBox x:Name="DataList"
+                     BorderThickness="0"
+                     Padding="0"
+                     Style="{StaticResource ListBox.Light.Style}"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     ItemContainerStyle="{DynamicResource NoSelectionListBoxItemStyle}"
+                     ItemTemplate="{StaticResource ItemDataTemplate}"
+                     CheckBox.Checked="HandleItemSelection"
+                     CheckBox.Unchecked="HandleItemSelection">
+            </ListBox>
+        </Expander.Content>
+    </Expander>
+</UserControl>

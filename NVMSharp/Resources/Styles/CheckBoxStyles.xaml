@@ -1,0 +1,161 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <SolidColorBrush x:Key="CheckBox.Dark.Static.Background"
+                     Color="Transparent" />
+    <SolidColorBrush x:Key="CheckBox.Dark.Static.Foreground"
+                     Color="Black" />
+    <SolidColorBrush x:Key="CheckBox.Dark.MouseOver.Background"
+                     Color="Transparent" />
+    <SolidColorBrush x:Key="CheckBox.Dark.MouseOver.Border"
+                     Color="#0276FD" />
+    <SolidColorBrush x:Key="CheckBox.Dark.Pressed.Background"
+                     Color="Transparent" />
+    <SolidColorBrush x:Key="CheckBox.Dark.Pressed.Foreground"
+                     Color="White" />
+    <SolidColorBrush x:Key="CheckBox.Dark.Disabled.Background"
+                     Color="Transparent" />
+    <SolidColorBrush x:Key="CheckBox.Dark.Disabled.Foreground"
+                     Color="#FFCACACA" />
+    <SolidColorBrush x:Key="CheckBox.Dark.OptionMark.Foreground"
+                     Color="DarkGreen" />
+    <SolidColorBrush x:Key="CheckBox.Dark.IndeterminateMark.Foreground"
+                     Color="DarkBlue" />
+    <SolidColorBrush x:Key="CheckBox.Dark.Border.Foreground"
+                     Color="Maroon" />
+
+    <sys:Double x:Key="CheckBoxLargeFontSize">24</sys:Double>
+
+    <Style x:Key="CheckBox.Dark.TextBlockStyle"
+           TargetType="TextBlock">
+        <Setter Property="SnapsToDevicePixels"
+                Value="True"></Setter>
+        <Setter Property="Background"
+                Value="Transparent"></Setter>
+        <Setter Property="Foreground"
+                Value="Black"></Setter>
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="FontFamily"
+                Value="Segoe MDL2 Assets" />
+        <Setter Property="FontWeight"
+                Value="Light"></Setter>
+        <Setter Property="FontSize"
+                Value="{StaticResource CheckBoxLargeFontSize}" />
+    </Style>
+    
+    <Style x:Key="CheckBox.Dark.Style"
+           TargetType="{x:Type CheckBox}">
+        <Setter Property="FocusVisualStyle"
+                Value="{x:Null}" />
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="BorderBrush"
+                Value="Transparent" />
+        <Setter Property="Foreground"
+                Value="Black" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <Grid x:Name="templateRoot"
+                          Height="48"
+                          Background="Transparent"
+                          SnapsToDevicePixels="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="48" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="optionMark"
+                                   Focusable="False"
+                                   Text="&#xEC61;"
+                                   Style="{StaticResource CheckBox.Dark.TextBlockStyle}"
+                                   Foreground="{StaticResource CheckBox.Dark.OptionMark.Foreground}"
+                                   Opacity="0" />
+                        <TextBlock x:Name="indeterminateMark"
+                                   Focusable="False"
+                                   Text="&#xECCB;"
+                                   Style="{StaticResource CheckBox.Dark.TextBlockStyle}"
+                                   Opacity="0"
+                                   Foreground="{StaticResource CheckBox.Dark.IndeterminateMark.Foreground}" />
+                        <TextBlock x:Name="checkBoxBorder"
+                                   Focusable="False"
+                                   Text="&#xEB90;"
+                                   Style="{StaticResource CheckBox.Dark.TextBlockStyle}"
+                                   Foreground="{StaticResource CheckBox.Dark.Border.Foreground}" />
+                        <ContentPresenter x:Name="contentPresenter"
+                                          Grid.Column="1"
+                                          Focusable="False"
+                                          HorizontalAlignment="Left"
+                                          RecognizesAccessKey="True"
+                                          SnapsToDevicePixels="True"
+                                          VerticalAlignment="Center" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="true">
+                            <Setter TargetName="templateRoot"
+                                    Property="Background"
+                                    Value="{StaticResource CheckBox.Dark.MouseOver.Background}"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled"
+                                 Value="false">
+                            <Setter TargetName="checkBoxBorder"
+                                    Property="Foreground"
+                                    Value="{StaticResource CheckBox.Dark.Disabled.Foreground}" />
+                            <Setter TargetName="optionMark"
+                                    Property="Foreground"
+                                    Value="{StaticResource CheckBox.Dark.Disabled.Foreground}" />
+                            <Setter TargetName="indeterminateMark"
+                                    Property="Foreground"
+                                    Value="{StaticResource CheckBox.Dark.Disabled.Foreground}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed"
+                                 Value="true">
+                            <Setter TargetName="templateRoot"
+                                    Property="Background"
+                                    Value="{StaticResource CheckBox.Dark.Pressed.Background}"></Setter>
+                            <Setter TargetName="checkBoxBorder"
+                                    Property="Foreground"
+                                    Value="{StaticResource CheckBox.Dark.Pressed.Foreground}" />
+                            <Setter TargetName="optionMark"
+                                    Property="Foreground"
+                                    Value="{StaticResource CheckBox.Dark.Pressed.Foreground}" />
+                            <Setter TargetName="indeterminateMark"
+                                    Property="Foreground"
+                                    Value="{StaticResource CheckBox.Dark.Pressed.Foreground}" />
+                        </Trigger>
+                        <Trigger Property="IsChecked"
+                                 Value="true">
+                            <Setter Property="Opacity"
+                                    TargetName="optionMark"
+                                    Value="1" />
+                            <Setter Property="Opacity"
+                                    TargetName="indeterminateMark"
+                                    Value="0" />
+                            <Setter Property="Opacity"
+                                    TargetName="checkBoxBorder"
+                                    Value="0" />
+                        </Trigger>
+                        <Trigger Property="IsChecked"
+                                 Value="{x:Null}">
+                            <Setter Property="Opacity"
+                                    TargetName="optionMark"
+                                    Value="0" />
+                            <Setter Property="Opacity"
+                                    TargetName="indeterminateMark"
+                                    Value="1" />
+                            <Setter Property="Opacity"
+                                    TargetName="checkBoxBorder"
+                                    Value="0" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
