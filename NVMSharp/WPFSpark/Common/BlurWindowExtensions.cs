@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Based on Rafael Rivera's blog
+// http://withinrafael.com/adding-the-aero-glass-blur-to-your-windows-10-apps/
+
+using System;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;

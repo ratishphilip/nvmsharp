@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NVMSharp.Common
+﻿namespace NVMSharp.Common
 {
+    /// <summary>
+    /// Defines the various mode the app can be in
+    /// </summary>
     public enum AppMode : int
     {
         None = 0,
@@ -16,6 +13,11 @@ namespace NVMSharp.Common
         About
     }
 
+    /// <summary>
+    /// Defines the various result of the Initialization
+    /// operation in which the Environment variables
+    /// are accessed for the first time when the app starts
+    /// </summary>
     public enum InitResultType : int
     {
         None = 0,
@@ -24,6 +26,9 @@ namespace NVMSharp.Common
         OtherError
     }
 
+    /// <summary>
+    /// The mode for the EditWindow
+    /// </summary>
     public enum ModificationModeType : int
     {
         None = 0,
@@ -33,6 +38,9 @@ namespace NVMSharp.Common
         EditValue
     }
 
+    /// <summary>
+    /// A few strings
+    /// </summary>
     public static class Constants
     {
         public const string VERSION = "2.0";

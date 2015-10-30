@@ -1,4 +1,27 @@
-﻿using System;
+﻿// Copyright (c) 2015 Ratish Philip 
+//
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal 
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is 
+// furnished to do so, subject to the following conditions: 
+// 
+// 
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software. 
+// 
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE. 
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -30,6 +53,11 @@ namespace NVMSharp.Common
 
         #region Construction / Initialization
 
+        /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="key">The name of the Environment Variable</param>
+        /// <param name="data">The value of the Environment Variable</param>
         public EnVar(string key, string data)
         {
             Key = key;
@@ -40,6 +68,10 @@ namespace NVMSharp.Common
 
         #region APIs
 
+        /// <summary>
+        /// Adds a new value to the existing value
+        /// </summary>
+        /// <param name="newValue">new value to be added</param>
         public void AddValue(string newValue)
         {
             if (String.IsNullOrWhiteSpace(newValue) ||
@@ -51,6 +83,12 @@ namespace NVMSharp.Common
             Data = String.Join(Constants.SEPARATOR, values);
         }
 
+        /// <summary>
+        /// Replaces the environment variable's existing value
+        /// with a new one.
+        /// </summary>
+        /// <param name="oldValue">Old Value</param>
+        /// <param name="newValue">New Value</param>
         public void UpdateValue(string oldValue, string newValue)
         {
             if (String.IsNullOrWhiteSpace(oldValue) ||
@@ -60,12 +98,17 @@ namespace NVMSharp.Common
                 return;
 
             var values = Values;
-            int index = values.IndexOf(oldValue);
+            var index = values.IndexOf(oldValue);
             values.Insert(index, newValue);
             values.Remove(oldValue);
             Data = String.Join(Constants.SEPARATOR, values);
         }
 
+        /// <summary>
+        /// Moves the value to the beginning of the
+        /// Values array
+        /// </summary>
+        /// <param name="keyValue">value to be moved</param>
         public void MoveToTop(string keyValue)
         {
             if (String.IsNullOrWhiteSpace(keyValue) ||
@@ -79,6 +122,10 @@ namespace NVMSharp.Common
             Data = String.Join(Constants.SEPARATOR, values);
         }
 
+        /// <summary>
+        /// Moves the value one index up in the Values array
+        /// </summary>
+        /// <param name="keyValue">value to be moved</param>
         public void MoveUp(string keyValue)
         {
             if (String.IsNullOrWhiteSpace(keyValue) ||
@@ -96,6 +143,10 @@ namespace NVMSharp.Common
             Data = String.Join(Constants.SEPARATOR, values);
         }
 
+        /// <summary>
+        /// Moves the value one index below in the Values array
+        /// </summary>
+        /// <param name="keyValue">value to be moved</param>
         public void MoveDown(string keyValue)
         {
             if (String.IsNullOrWhiteSpace(keyValue) ||
@@ -113,6 +164,10 @@ namespace NVMSharp.Common
             Data = String.Join(Constants.SEPARATOR, values);
         }
 
+        /// <summary>
+        /// Moves the value to the end of the Values array
+        /// </summary>
+        /// <param name="keyValue">value to be moved</param>
         public void MoveToBottom(string keyValue)
         {
             if (String.IsNullOrWhiteSpace(keyValue) ||
@@ -126,6 +181,9 @@ namespace NVMSharp.Common
             Data = String.Join(Constants.SEPARATOR, values);
         }
 
+        /// <summary>
+        /// Reverses the order of the values in the Values array
+        /// </summary>
         public void ReverseValues()
         {
             if (String.IsNullOrWhiteSpace(Data) ||
@@ -137,6 +195,10 @@ namespace NVMSharp.Common
             Data = String.Join(Constants.SEPARATOR, values);
         }
 
+        /// <summary>
+        /// Deletes the value from the Values array
+        /// </summary>
+        /// <param name="keyValue">value to be moved</param>
         public void DeleteValue(string keyValue)
         {
             if (String.IsNullOrWhiteSpace(keyValue) ||
@@ -149,6 +211,11 @@ namespace NVMSharp.Common
             Data = String.Join(Constants.SEPARATOR, values);
         }
 
+        /// <summary>
+        /// Merges the existing values with the unique values in the given
+        /// data string.
+        /// </summary>
+        /// <param name="data">string containing new values</param>
         public void MergeData(string data)
         {
             if (String.IsNullOrWhiteSpace(data))
@@ -164,6 +231,12 @@ namespace NVMSharp.Common
 
         #region IEquatable Implementation
 
+        /// <summary>
+        /// Checks if the given EnVar object has the same key
+        /// as this EnVar object
+        /// </summary>
+        /// <param name="other">EnVar object</param>
+        /// <returns></returns>
         public bool Equals(EnVar other)
         {
             if (other == null)

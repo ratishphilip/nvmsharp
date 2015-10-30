@@ -1,4 +1,28 @@
-﻿using System.Collections.Generic;
+﻿// Copyright (c) 2015 Ratish Philip 
+//
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal 
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is 
+// furnished to do so, subject to the following conditions: 
+// 
+// 
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software. 
+// 
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE. 
+
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using NVMSharp.Common;
@@ -162,6 +186,9 @@ namespace NVMSharp.Controls
 
         #region Construction / Initialization
 
+        /// <summary>
+        /// Ctor
+        /// </summary>
         public ImportExportSelectionControl()
         {
             InitializeComponent();
@@ -171,6 +198,11 @@ namespace NVMSharp.Controls
 
         #region Event Handlers
 
+        /// <summary>
+        /// Handles the checked/unchecked events of the Header checkbox
+        /// </summary>
+        /// <param name="sender">Header Checkbox</param>
+        /// <param name="e">RoutedEventArgs</param>
         private void HandleHeaderSelection(object sender, RoutedEventArgs e)
         {
             if (_itemFlag)
@@ -189,6 +221,12 @@ namespace NVMSharp.Controls
             _headerFlag = false;
         }
 
+        /// <summary>
+        /// Handles the checked/unchecked events of the item checkbox
+        /// in the items list
+        /// </summary>
+        /// <param name="sender">Item Checkbox</param>
+        /// <param name="e">RoutedEventArgs</param>
         private void HandleItemSelection(object sender, RoutedEventArgs e)
         {
             if (_headerFlag)
@@ -196,7 +234,7 @@ namespace NVMSharp.Controls
 
             _itemFlag = true;
 
-            UpdateUserSelection();
+            UpdateHeaderSelection();
             // Raise the event to notify that the selection has changed
             RaiseSelectionChangedEvent(this);
 
@@ -207,14 +245,18 @@ namespace NVMSharp.Controls
 
         #region Helpers
 
-        private void UpdateUserSelection()
+        /// <summary>
+        /// Updates the check state of the Header based on the check states
+        /// of the items.
+        /// </summary>
+        private void UpdateHeaderSelection()
         {
             bool? state = null;
 
-            bool firstCheck = true;
-            foreach (ImportExportVM item in DataList.Items)
+            var firstCheck = true;
+            foreach (var currentState in from ImportExportVM item in DataList.Items
+                                         select item.IsSelected)
             {
-                bool? currentState = item.IsSelected;
                 if (firstCheck)
                 {
                     state = currentState;

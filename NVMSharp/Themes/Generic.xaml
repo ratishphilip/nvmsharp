@@ -2,6 +2,5 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/NVMSharp;component/Themes/SparkWindow.Generic.Glass.xaml"></ResourceDictionary>
-        
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
