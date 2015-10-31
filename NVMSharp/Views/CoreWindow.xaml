@@ -58,7 +58,7 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition MinWidth="280"
+                <ColumnDefinition MinWidth="300"
                                   MaxWidth="500"
                                   Width="0.2*"></ColumnDefinition>
                 <ColumnDefinition Width="1"></ColumnDefinition>
@@ -92,6 +92,13 @@
                         Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
                         ToolTip="Edit Environment Variable"
                         Command="{Binding EditKeyCommand}" />
+                <!-- Copy -->
+                <Button Content="&#xE16F;"
+                        Width="48"
+                        Height="48"
+                        Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
+                        ToolTip="Copy Environment Variable"
+                        Command="{Binding CopyKeyCommand}" />
                 <!-- Delete -->
                 <Button Content="&#xe107;"
                         Width="48"
@@ -120,6 +127,13 @@
                         Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
                         ToolTip="Edit Value"
                         Command="{Binding EditValueCommand}" />
+                <!-- Copy -->
+                <Button Content="&#xE16F;"
+                        Width="48"
+                        Height="48"
+                        Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
+                        ToolTip="Copy Value"
+                        Command="{Binding CopyValueCommand}" />
                 <!-- Move to Top -->
                 <Button Content="&#xe11c;"
                         Width="48"

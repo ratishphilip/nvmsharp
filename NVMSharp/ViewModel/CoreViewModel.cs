@@ -562,6 +562,12 @@ namespace NVMSharp.ViewModel
         public RelayCommand EditKeyCommand { get; set; }
 
         /// <summary>
+        /// Gets or sets the CopyKeyCommand property. This command
+        /// is for copying the Name of the environment variable.
+        /// </summary>
+        public RelayCommand CopyKeyCommand { get; set; }
+
+        /// <summary>
         /// Gets or sets the DeleteKeyCommand property. This command
         /// is for deleting the selected Key.
         /// </summary>
@@ -581,6 +587,12 @@ namespace NVMSharp.ViewModel
         /// is for editing an existing value of the ActiveKey.
         /// </summary>
         public RelayCommand EditValueCommand { get; set; }
+
+        /// <summary>
+        /// Gets or sets the CopyValueCommand property. This command
+        /// is for copying the selected value.
+        /// </summary>
+        public RelayCommand CopyValueCommand { get; set; }
 
         /// <summary>
         /// Gets or sets the MoveToTopCommand property. This command
@@ -859,6 +871,13 @@ namespace NVMSharp.ViewModel
             IsProgressVisible = false;
         }
 
+        private void OnCopyKey()
+        {
+            Clipboard.SetText(ActiveKey);
+            _messageService.ShowAsync($"Copied '{ActiveKey}' to clipboard.", "Copy Environment Variable",
+                MessageBoxButton.OK, MessageBoxImage.None);
+        }
+
         private async void OnDeleteKey()
         {
             var result = await _messageService.ShowAsync(Constants.CONFIRM_DELETE_KEY, Constants.CONFIRM_DELETE_TITLE, MessageBoxButton.YesNo, MessageBoxImage.Warning);
@@ -936,6 +955,13 @@ namespace NVMSharp.ViewModel
                 RegistryManager.SaveEnvironmentVariable(_currentVars[ActiveKey], _target);
             }));
             IsProgressVisible = false;
+        }
+
+        private void OnCopyValue()
+        {
+            Clipboard.SetText(ActiveValue);
+            _messageService.ShowAsync($"Copied '{ActiveValue}' to clipboard.", "Copy Value",
+                MessageBoxButton.OK, MessageBoxImage.None);
         }
 
         private async void OnMoveToTop()
@@ -1150,10 +1176,12 @@ namespace NVMSharp.ViewModel
             // Key Commands
             NewKeyCommand = CreateCommand(OnNewKey, () => true, null);
             EditKeyCommand = CreateCommand(OnEditKey, () => (ActiveKey != null), nameof(ActiveKey));
+            CopyKeyCommand = CreateCommand(OnCopyKey, () => (ActiveKey != null), nameof(ActiveKey));
             DeleteKeyCommand = CreateCommand(OnDeleteKey, () => (ActiveKey != null), nameof(ActiveKey));
             // Value Commands
             NewValueCommand = CreateCommand(OnNewValue, () => (ActiveKey != null), nameof(ActiveKey));
             EditValueCommand = CreateCommand(OnEditValue, () => (ActiveValue != null), nameof(ActiveValue));
+            CopyValueCommand = CreateCommand(OnCopyValue, () => (ActiveValue != null), nameof(ActiveValue));
             MoveToTopCommand = CreateCommand(OnMoveToTop, CanMoveUp, nameof(ActiveValue));
             MoveUpCommand = CreateCommand(OnMoveUp, CanMoveUp, nameof(ActiveValue));
             MoveDownCommand = CreateCommand(OnMoveDown, CanMoveDown, nameof(ActiveValue));
