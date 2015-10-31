@@ -44,6 +44,10 @@
                           ShadowDepth="1"
                           RenderingBias="Quality"></DropShadowEffect>
     </wpfspark:SparkWindow.TitleEffect>
+    <wpfspark:SparkWindow.TitleImage>
+        <Image Source="/NVMSharp;component/Resources/Images/nvmsharp.png" Width="26" Height="26" HorizontalAlignment="Center"
+               VerticalAlignment="Center"></Image>
+    </wpfspark:SparkWindow.TitleImage>
     <Grid x:Name="RootGrid"
           Background="#DBE6ECF0">
         <Grid.ColumnDefinitions>
