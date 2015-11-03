@@ -1,5 +1,5 @@
 # nvmsharp
-<img alt="NVM# logo" src="https://cloud.githubusercontent.com/assets/7021835/10869298/d513cad0-805f-11e5-9c53-f4cb20fb4705.png" />
+<img alt="NVM# logo" src="https://cloud.githubusercontent.com/assets/7021835/10910990/618ff19e-81f7-11e5-9f9a-8b00ff108cb2.png" />
 
 NVM# is a Windows 10 desktop app (.Net 4.6) which provides an effective way of managing the environment variables. 
 
