@@ -7,15 +7,15 @@ Managing environment variables has been a tedious task since the early days of W
 
 So I made this app as a proof of concept on how the user experience should be. This app is an update to my previous project NVM in CodeProject (which I wrote 8 years ago!).
 
-<img alt="screenshot" src="https://cloud.githubusercontent.com/assets/7021835/10869312/a2801f3c-8060-11e5-8591-6819ccaa8825.png" />
+<img alt="screenshot" src="https://cloud.githubusercontent.com/assets/7021835/10911175/6caccdf8-81f8-11e5-9c6f-e9b71ad4c353.png" />
 
 NVM# matches the look and feel of the Settings app in Windows 10. I wanted to make NVM# as a Windows Store app, but you cannot access (and modify) Environment Variables in Store app as they are sandboxed. So I created a WPF desktop app which must be run with Administrator privileges to manage your Environment Variables.
 
-<img alt="import" src="https://cloud.githubusercontent.com/assets/7021835/10869311/a27fae1c-8060-11e5-88f7-6716c8b92c82.png" />
+<img alt="import" src="https://cloud.githubusercontent.com/assets/7021835/10911173/6c95fc04-81f8-11e5-9131-48cd6bba29b4.png" />
 
 In addition to providing the basic CRUD operations on Environment Variables, NVM# also allows you to Import and Export environment variables from and to an XML file, respectively. It proves really helpful in a scenario where the team needs to have the same environment variables to work efficiently (believe me, I have faced this scenario a lot several years ago and had wished such an app existed back then!)
 
-<img alt="export" src="https://cloud.githubusercontent.com/assets/7021835/10869313/a281e72c-8060-11e5-88f7-0c89dd9c4d38.png" />
+<img alt="export" src="https://cloud.githubusercontent.com/assets/7021835/10911174/6c97a586-81f8-11e5-81ec-a33a0ce49795.png" />
 
 I do hope Microsoft provides such a feature in their Settings app in the near future!
 
