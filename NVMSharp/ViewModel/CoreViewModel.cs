@@ -762,16 +762,19 @@ namespace NVMSharp.ViewModel
             }
             catch (SecurityException)
             {
-                // 
+                // Unable to access Environment Variables
                 InitResult = InitResultType.AccessDenied;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                // Some other unexpected error has occured. Log it!
+                EventLog.WriteEntry("NVM#", "Initialization Error: " + Environment.NewLine + e, EventLogEntryType.Error);
                 InitResult = InitResultType.OtherError;
             }
 
             if (InitResult == InitResultType.None)
             {
+                // Environment Variables accessed successfully
                 InitResult = InitResultType.InitOk;
             }
         }

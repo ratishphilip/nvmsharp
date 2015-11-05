@@ -189,18 +189,7 @@ SOFTWARE.
                                 <VisualState x:Name="Indeterminate" />
                             </VisualStateGroup>
                             <VisualStateGroup x:Name="FocusStates">
-                                <VisualState x:Name="Focused">
-                                    <!--<Storyboard>
-                                        <DoubleAnimation Duration="0"
-                                                         Storyboard.TargetName="FocusVisualWhite"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="1" />
-                                        <DoubleAnimation Duration="0"
-                                                         Storyboard.TargetName="FocusVisualBlack"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="1" />
-                                    </Storyboard>-->
-                                </VisualState>
+                                <VisualState x:Name="Focused" />
                                 <VisualState x:Name="Unfocused" />
                                 <VisualState x:Name="PointerFocused" />
                             </VisualStateGroup>
@@ -378,18 +367,7 @@ SOFTWARE.
                                 <VisualState x:Name="Indeterminate" />
                             </VisualStateGroup>
                             <VisualStateGroup x:Name="FocusStates">
-                                <VisualState x:Name="Focused">
-                                    <!--<Storyboard>
-                                        <DoubleAnimation Duration="0"
-                                                         Storyboard.TargetName="FocusVisualWhite"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="1" />
-                                        <DoubleAnimation Duration="0"
-                                                         Storyboard.TargetName="FocusVisualBlack"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="1" />
-                                    </Storyboard>-->
-                                </VisualState>
+                                <VisualState x:Name="Focused" />
                                 <VisualState x:Name="Unfocused" />
                                 <VisualState x:Name="PointerFocused" />
                             </VisualStateGroup>
@@ -405,18 +383,6 @@ SOFTWARE.
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="20" />
                             </Grid.ColumnDefinitions>
-
-                            <Grid.Resources>
-                                <!--<Style TargetType="Rectangle"
-                                       x:Name="FocusVisual">
-                                    <Setter Property="Opacity"
-                                            Value="0" />
-                                    <Setter Property="StrokeDashArray"
-                                            Value="1,1" />
-                                    <Setter Property="StrokeEndLineCap"
-                                            Value="Square" />
-                                </Style>-->
-                            </Grid.Resources>
 
                             <!-- background -->
                             <Grid x:Name="UnCheckedBackground"
@@ -440,20 +406,6 @@ SOFTWARE.
                                            Fill="{StaticResource NavButtonCheckedHoverBackgroundBrush}" />
                             </Grid>
 
-                            <!-- focus -->
-                            <!--<Rectangle x:Name="FocusVisualWhite"
-                                       Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}"
-                                       StrokeDashOffset="1.5"
-                                       Opacity="0"
-                                       StrokeDashArray="1,1"
-                                       StrokeEndLineCap="Square" />
-                            <Rectangle x:Name="FocusVisualBlack"
-                                       Stroke="{StaticResource FocusVisualBlackStrokeThemeBrush}"
-                                       StrokeDashOffset="0.5"
-                                       Opacity="0"
-                                       StrokeDashArray="1,1"
-                                       StrokeEndLineCap="Square" />-->
-
                             <!-- glyph -->
                             <TextBlock x:Name="Glyph"
                                        Text="{TemplateBinding Tag}"
@@ -468,13 +420,6 @@ SOFTWARE.
                                        Margin="{TemplateBinding Padding}"
                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                            <!--<ContentPresenter x:Name="ContentPresenter"
-                                              Grid.Column="1"
-                                              Margin="{TemplateBinding Padding}"
-                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                              Content="{TemplateBinding Content}"
-                                              ContentTemplate="{TemplateBinding ContentTemplate}" />-->
                         </Grid>
                     </Border>
                 </ControlTemplate>

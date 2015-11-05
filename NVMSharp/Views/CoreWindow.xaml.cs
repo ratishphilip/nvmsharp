@@ -48,6 +48,7 @@ namespace NVMSharp.Views
 
         private void Initialize()
         {
+            // Show the Windows in maximized state
             WindowState = WindowState.Maximized;
             _coreViewModel = new CoreViewModel();
             DataContext = _coreViewModel;
@@ -71,7 +72,7 @@ namespace NVMSharp.Views
 
         private void OnMenuButtonClicked(object sender, RoutedEventArgs e)
         {
-            SplitViewMenu.Width = (SplitViewMenu.Width == 48) ? 240 : 48;
+            SplitViewMenu.Width = ((int)SplitViewMenu.Width == 48) ? 240 : 48;
         }
 
         private void OnViewUserVariables(object sender, RoutedEventArgs e)
@@ -102,10 +103,13 @@ namespace NVMSharp.Views
         {
             SplitViewMenu.Width = 48;
             _coreViewModel.CurrentAppMode = AppMode.About;
-
-
         }
 
+        /// <summary>
+        /// Allows the ScrollViewer to handle Mousewheel interactions
+        /// </summary>
+        /// <param name="sender">ScrollViewer</param>
+        /// <param name="e">MouseWheelEventArgs object</param>
         private void OnPreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             ScrollViewer scv = (ScrollViewer)sender;
@@ -135,6 +139,11 @@ namespace NVMSharp.Views
             SetTooltip(textBlock);
         }
 
+        /// <summary>
+        /// Sets the tooltip to the TextBlock only if the entire text does not
+        /// fit in the available space (i.e. the TextBlock shows Ellipis at the end)
+        /// </summary>
+        /// <param name="textBlock">TextBlock object</param>
         private static void SetTooltip(TextBlock textBlock)
         {
             if (textBlock == null)
