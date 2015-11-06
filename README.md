@@ -21,3 +21,5 @@ I do hope Microsoft provides such a feature in their Settings app in the near fu
 Till then, feel free to use my app!
 
 Cheers!
+
+P.S. More details about this app <a href="http://www.codeproject.com/Articles/1045296/NVMSharp" target="_blank">here</a>.
