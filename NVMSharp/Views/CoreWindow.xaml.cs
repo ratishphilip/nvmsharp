@@ -37,6 +37,12 @@ namespace NVMSharp.Views
     /// </summary>
     public partial class CoreWindow : SparkWindow
     {
+        enum SplitViewMenuWidth
+        {
+            Narrow = 48,
+            Wide = 240
+        }
+
         private CoreViewModel _coreViewModel = null;
 
         public CoreWindow()
@@ -48,11 +54,13 @@ namespace NVMSharp.Views
 
         private void Initialize()
         {
-            // Show the Windows in maximized state
-            WindowState = WindowState.Maximized;
+            // Show the window in normal state
+            WindowState = WindowState.Normal;
+
             _coreViewModel = new CoreViewModel();
             DataContext = _coreViewModel;
             _coreViewModel.InitializeEnvironmentVariables();
+
             switch (_coreViewModel.InitResult)
             {
                 case InitResultType.InitOk:
@@ -68,40 +76,74 @@ namespace NVMSharp.Views
             }
 
             UserButton.IsChecked = true;
+
+            SizeChanged += (o, a) =>
+            {
+                switch (WindowState)
+                {
+                    case WindowState.Maximized:
+                        SplitViewMenu.Width = (int)SplitViewMenuWidth.Wide;
+                        break;
+
+                    case WindowState.Normal:
+                        SplitViewMenu.Width = (int)SplitViewMenuWidth.Narrow;
+                        break;
+                }
+
+                RootGrid.ColumnDefinitions[0] = new ColumnDefinition { Width = new GridLength(SplitViewMenu.Width) };
+                RootGrid.InvalidateVisual();
+            };
+        }
+
+        private int GetColumnZeroWidth()
+        {
+            // determine how wide column zero should be based on window size
+            // if window is maximized, column zero width is equal to current menu width.
+            // if window is normal, column zero width is equal to narrow menu width
+            return WindowState == WindowState.Maximized
+                       ? (int) SplitViewMenu.Width
+                       : (int) SplitViewMenuWidth.Narrow;
+
         }
 
         private void OnMenuButtonClicked(object sender, RoutedEventArgs e)
         {
-            SplitViewMenu.Width = ((int)SplitViewMenu.Width == 48) ? 240 : 48;
+            // toggle menu width
+            SplitViewMenu.Width = (int) SplitViewMenu.Width == (int) SplitViewMenuWidth.Narrow
+                                      ? (int) SplitViewMenuWidth.Wide
+                                      : (int) SplitViewMenuWidth.Narrow;
+
+            // reset column width in the column definition based on window size
+            RootGrid.ColumnDefinitions[0] = new ColumnDefinition {Width = new GridLength(GetColumnZeroWidth())};
         }
 
         private void OnViewUserVariables(object sender, RoutedEventArgs e)
         {
-            SplitViewMenu.Width = 48;
+            SplitViewMenu.Width = GetColumnZeroWidth();
             _coreViewModel.CurrentAppMode = AppMode.User;
         }
 
         private void OnViewSystemVariables(object sender, RoutedEventArgs e)
         {
-            SplitViewMenu.Width = 48;
+            SplitViewMenu.Width = GetColumnZeroWidth();
             _coreViewModel.CurrentAppMode = AppMode.System;
         }
 
         private void OnImportVariables(object sender, RoutedEventArgs e)
         {
-            SplitViewMenu.Width = 48;
+            SplitViewMenu.Width = GetColumnZeroWidth();
             _coreViewModel.CurrentAppMode = AppMode.Import;
         }
 
         private void OnExportVariables(object sender, RoutedEventArgs e)
         {
-            SplitViewMenu.Width = 48;
+            SplitViewMenu.Width = GetColumnZeroWidth();
             _coreViewModel.CurrentAppMode = AppMode.Export;
         }
 
         private void OnAboutButtonChecked(object sender, RoutedEventArgs e)
         {
-            SplitViewMenu.Width = 48;
+            SplitViewMenu.Width = GetColumnZeroWidth();
             _coreViewModel.CurrentAppMode = AppMode.About;
         }
 
