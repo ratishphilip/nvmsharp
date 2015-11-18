@@ -84,50 +84,66 @@ namespace NVMSharp.Views
                     case WindowState.Maximized:
                         SplitViewMenu.Width = (int)SplitViewMenuWidth.Wide;
                         break;
+
                     case WindowState.Normal:
                         SplitViewMenu.Width = (int)SplitViewMenuWidth.Narrow;
                         break;
                 }
+
                 RootGrid.ColumnDefinitions[0] = new ColumnDefinition { Width = new GridLength(SplitViewMenu.Width) };
+                RootGrid.InvalidateVisual();
             };
+        }
+
+        private int GetColumnZeroWidth()
+        {
+            // determine how wide column zero should be based on window size
+            // if window is maximized, column zero width is equal to current menu width.
+            // if window is normal, column zero width is equal to narrow menu width
+            return WindowState == WindowState.Maximized
+                       ? (int) SplitViewMenu.Width
+                       : (int) SplitViewMenuWidth.Narrow;
+
         }
 
         private void OnMenuButtonClicked(object sender, RoutedEventArgs e)
         {
-            SplitViewMenu.Width = (int)SplitViewMenu.Width == (int)SplitViewMenuWidth.Narrow
-                                      ? (int)SplitViewMenuWidth.Wide
-                                      : (int)SplitViewMenuWidth.Narrow;
+            // toggle menu width
+            SplitViewMenu.Width = (int) SplitViewMenu.Width == (int) SplitViewMenuWidth.Narrow
+                                      ? (int) SplitViewMenuWidth.Wide
+                                      : (int) SplitViewMenuWidth.Narrow;
 
-            RootGrid.ColumnDefinitions[0] = new ColumnDefinition { Width = new GridLength(SplitViewMenu.Width) };
+            // reset column width in the column definition based on window size
+            RootGrid.ColumnDefinitions[0] = new ColumnDefinition {Width = new GridLength(GetColumnZeroWidth())};
         }
 
         private void OnViewUserVariables(object sender, RoutedEventArgs e)
         {
-            //SplitViewMenu.Width = 48;
+            SplitViewMenu.Width = GetColumnZeroWidth();
             _coreViewModel.CurrentAppMode = AppMode.User;
         }
 
         private void OnViewSystemVariables(object sender, RoutedEventArgs e)
         {
-            //SplitViewMenu.Width = 48;
+            SplitViewMenu.Width = GetColumnZeroWidth();
             _coreViewModel.CurrentAppMode = AppMode.System;
         }
 
         private void OnImportVariables(object sender, RoutedEventArgs e)
         {
-            //SplitViewMenu.Width = 48;
+            SplitViewMenu.Width = GetColumnZeroWidth();
             _coreViewModel.CurrentAppMode = AppMode.Import;
         }
 
         private void OnExportVariables(object sender, RoutedEventArgs e)
         {
-            //SplitViewMenu.Width = 48;
+            SplitViewMenu.Width = GetColumnZeroWidth();
             _coreViewModel.CurrentAppMode = AppMode.Export;
         }
 
         private void OnAboutButtonChecked(object sender, RoutedEventArgs e)
         {
-            //SplitViewMenu.Width = 48;
+            SplitViewMenu.Width = GetColumnZeroWidth();
             _coreViewModel.CurrentAppMode = AppMode.About;
         }
 
