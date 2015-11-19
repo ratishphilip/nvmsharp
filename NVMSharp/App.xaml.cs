@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using NVMSharp.Services;
 using Microsoft.Shell;
 
 namespace NVMSharp
@@ -21,6 +22,7 @@ namespace NVMSharp
         {
             if (SingleInstance<App>.InitializeAsFirstInstance(UniqueName))
             {
+                ServiceInjector.InjectServices();
                 _application = new App();
 
                 _application.InitializeComponent();
