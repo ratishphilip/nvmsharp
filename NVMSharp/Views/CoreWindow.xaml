@@ -464,7 +464,8 @@
                              ToolTip="User" />
 
                 <!-- System button -->
-                <RadioButton Tag="&#xec4e;"
+                <RadioButton x:Name="SystemButton"
+                             Tag="&#xec4e;"
                              Content="System"
                              Style="{StaticResource SplitViewNavButtonStyle}"
                              Foreground="Black"
@@ -473,7 +474,8 @@
                              ToolTip="System" />
 
                 <!-- Import button -->
-                <RadioButton Tag="&#xe976;"
+                <RadioButton x:Name="ImportButton"
+                             Tag="&#xe976;"
                              Content="Import"
                              Style="{StaticResource SplitViewNavButtonStyle}"
                              Checked="OnImportVariables"
@@ -481,7 +483,8 @@
                              ToolTip="Import" />
 
                 <!-- Export button -->
-                <RadioButton Tag="&#xea4e;"
+                <RadioButton x:Name="ExportButton"
+                             Tag="&#xea4e;"
                              Content="Export"
                              SnapsToDevicePixels="True"
                              Style="{StaticResource SplitViewNavButtonStyle}"
@@ -490,7 +493,8 @@
                              ToolTip="Export" />
 
                 <!-- About button -->
-                <RadioButton Tag="&#xe946;"
+                <RadioButton x:Name="AboutButton"
+                             Tag="&#xe946;"
                              Content="About"
                              SnapsToDevicePixels="True"
                              Style="{StaticResource SplitViewNavButtonStyle}"

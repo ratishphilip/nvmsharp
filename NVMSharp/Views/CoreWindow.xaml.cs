@@ -22,6 +22,7 @@
 // SOFTWARE. 
 
 using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -93,6 +94,16 @@ namespace NVMSharp.Views
                 RootGrid.ColumnDefinitions[0] = new ColumnDefinition { Width = new GridLength(SplitViewMenu.Width) };
                 RootGrid.InvalidateVisual();
             };
+
+            SplitViewMenu.SizeChanged += (o, a) =>
+                                         {
+                                             var isNarrowMenu = (int) SplitViewMenu.Width == (int) SplitViewMenuWidth.Narrow;
+                                             ToolTipService.SetIsEnabled(UserButton, isNarrowMenu);
+                                             ToolTipService.SetIsEnabled(SystemButton, isNarrowMenu);
+                                             ToolTipService.SetIsEnabled(ImportButton, isNarrowMenu);
+                                             ToolTipService.SetIsEnabled(ExportButton, isNarrowMenu);
+                                             ToolTipService.SetIsEnabled(AboutButton, isNarrowMenu);
+                                         };
         }
 
         private int GetColumnZeroWidth()
