@@ -5,6 +5,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/NVMSharp;component/Resources/Styles/IconGlyphVectors.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="/NVMSharp;component/Resources/Styles/SplitViewStyles.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="/NVMSharp;component/Resources/Styles/ListBoxStyles.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="/NVMSharp;component/Resources/Styles/Button.Light.Styles.xaml"></ResourceDictionary>

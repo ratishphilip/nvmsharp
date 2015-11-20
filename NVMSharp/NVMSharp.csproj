@@ -101,6 +101,7 @@
     </Compile>
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\ContentVisibilityConverter.cs" />
+    <Compile Include="Converters\GeometryPathConverter.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Services\DispatcherService.cs" />
     <Compile Include="Services\FileService.cs" />
@@ -156,6 +157,10 @@
     <Page Include="Resources\Styles\ExpanderStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Styles\IconGlyphVectors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Styles\ListBoxStyles.xaml">
       <SubType>Designer</SubType>

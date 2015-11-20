@@ -25,8 +25,11 @@ SOFTWARE.
 
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
-    <sys:Double x:Key="IconGlyphLargeFontSize">18</sys:Double>
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:converters="clr-namespace:NVMSharp.Converters">
+    <converters:GeometryPathConverter x:Key="GeometryConverter"></converters:GeometryPathConverter>
+    
+    <sys:Double x:Key="IconGlyphLargeFontSize">16</sys:Double>
     <Style TargetType="TextBlock"
            x:Key="IconGlyph.Light.TextBlockStyle">
         <Setter Property="SnapsToDevicePixels"
@@ -97,7 +100,7 @@ SOFTWARE.
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Background="{TemplateBinding Background}"
                             SnapsToDevicePixels="true">
-                        <Grid>
+                        <!--<Grid>
                             <TextBlock x:Name="textContent"
                                        Focusable="False"
                                        Text="{TemplateBinding Content}"
@@ -105,7 +108,16 @@ SOFTWARE.
                                        Margin="{TemplateBinding Padding}"
                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                        </Grid>
+                        </Grid>-->
+                        <Canvas Width="16"
+                                Height="16"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                            <Path x:Name="Glyph"
+                                  SnapsToDevicePixels="True"
+                                  Fill="White"
+                                  Data="{TemplateBinding Content, Converter={StaticResource GeometryConverter}}"></Path>
+                        </Canvas>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsDefaulted"
@@ -131,8 +143,8 @@ SOFTWARE.
                             <Setter Property="BorderBrush"
                                     TargetName="border"
                                     Value="{StaticResource Button.Light.Pressed.Border}" />
-                            <Setter Property="Foreground"
-                                    TargetName="textContent"
+                            <Setter Property="Fill"
+                                    TargetName="Glyph"
                                     Value="{StaticResource Button.Light.Pressed.Foreground}" />
                         </Trigger>
                         <Trigger Property="IsEnabled"
@@ -143,8 +155,8 @@ SOFTWARE.
                             <Setter Property="BorderBrush"
                                     TargetName="border"
                                     Value="{StaticResource Button.Light.Disabled.Border}" />
-                            <Setter Property="Foreground"
-                                    TargetName="textContent"
+                            <Setter Property="Fill"
+                                    TargetName="Glyph"
                                     Value="{StaticResource Button.Light.Disabled.Foreground}" />
                         </Trigger>
                     </ControlTemplate.Triggers>

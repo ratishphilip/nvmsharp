@@ -124,7 +124,7 @@ namespace NVMSharp.Views
                                       : (int) SplitViewMenuWidth.Narrow;
 
             // reset column width in the column definition based on window size
-            RootGrid.ColumnDefinitions[0] = new ColumnDefinition {Width = new GridLength(GetColumnZeroWidth())};
+            RootGrid.ColumnDefinitions[0].Width = new GridLength(GetColumnZeroWidth());
         }
 
         private void OnViewUserVariables(object sender, RoutedEventArgs e)

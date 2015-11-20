@@ -10,27 +10,8 @@
                       mc:Ignorable="d"
                       Title="NVM#"
                       FontSize="16"
-                      AllowsTransparency="True"
-                      WindowStyle="None"
-                      Background="#DBE6ECF0"
-                      TitleMargin="4,0,0,0"
-                      TitleBackground="Transparent"
                       Width="1000"
-                      Height="700"
-                      MinWidth="200"
-                      MinHeight="100"
-                      WindowFrameMode="CanMaximize"
-                      SystemForeground="Black"
-                      SystemBackground="Transparent"
-                      SystemBorderBrush="Transparent"
-                      SystemBorderThickness="0"
-                      SystemMouseOverForeground="White"
-                      SystemMouseOverBackground="#770276FD"
-                      SystemMouseOverBorderBrush="#0276FD"
-                      SystemPressedForeground="White"
-                      SystemPressedBackground="#0276FD"
-                      SystemPressedBorderBrush="#0276FD"
-                      SystemPressedBorderThickness="1">
+                      Height="700">
     <wpfspark:SparkWindow.Resources>
         <converters:ContentVisibilityConverter x:Key="ContentVisibilityHelper"></converters:ContentVisibilityConverter>
         <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityHelper"></converters:BooleanToVisibilityConverter>
@@ -45,7 +26,10 @@
                           RenderingBias="Quality"></DropShadowEffect>
     </wpfspark:SparkWindow.TitleEffect>
     <wpfspark:SparkWindow.TitleImage>
-        <Image Source="/NVMSharp;component/Resources/Images/nvmsharp.png" Width="24" Height="24" HorizontalAlignment="Center"
+        <Image Source="/NVMSharp;component/Resources/Images/nvmsharp.png"
+               Width="24"
+               Height="24"
+               HorizontalAlignment="Center"
                VerticalAlignment="Center"></Image>
     </wpfspark:SparkWindow.TitleImage>
     <Grid x:Name="RootGrid"
@@ -83,28 +67,28 @@
             <StackPanel HorizontalAlignment="Right"
                         Orientation="Horizontal">
                 <!-- Add New -->
-                <Button Content="&#xe109;"
+                <Button Content="Add.Glyph"
                         Width="48"
                         Height="48"
                         Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
                         ToolTip="New Environment Variable"
                         Command="{Binding NewKeyCommand}" />
                 <!-- Edit -->
-                <Button Content="&#xe70f;"
+                <Button Content="Edit.Glyph"
                         Width="48"
                         Height="48"
                         Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
                         ToolTip="Edit Environment Variable"
                         Command="{Binding EditKeyCommand}" />
                 <!-- Copy -->
-                <Button Content="&#xE16F;"
+                <Button Content="Copy.Glyph"
                         Width="48"
                         Height="48"
                         Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
                         ToolTip="Copy Environment Variable"
                         Command="{Binding CopyKeyCommand}" />
                 <!-- Delete -->
-                <Button Content="&#xe107;"
+                <Button Content="Delete.Glyph"
                         Width="48"
                         Height="48"
                         Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
@@ -118,63 +102,63 @@
                         HorizontalAlignment="Right"
                         Orientation="Horizontal">
                 <!-- Add New -->
-                <Button Content="&#xe109;"
+                <Button Content="Add.Glyph"
                         Width="48"
                         Height="48"
                         Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
                         ToolTip="Add New Value"
                         Command="{Binding NewValueCommand}" />
                 <!-- Edit -->
-                <Button Content="&#xe70f;"
+                <Button Content="Edit.Glyph"
                         Width="48"
                         Height="48"
                         Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
                         ToolTip="Edit Value"
                         Command="{Binding EditValueCommand}" />
                 <!-- Copy -->
-                <Button Content="&#xE16F;"
+                <Button Content="Copy.Glyph"
                         Width="48"
                         Height="48"
                         Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
                         ToolTip="Copy Value"
                         Command="{Binding CopyValueCommand}" />
                 <!-- Move to Top -->
-                <Button Content="&#xe11c;"
+                <Button Content="MoveToTop.Glyph"
                         Width="48"
                         Height="48"
                         Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
                         ToolTip="Move to Top"
                         Command="{Binding MoveToTopCommand}" />
                 <!-- Move up -->
-                <Button Content="&#xe110;"
+                <Button Content="MoveUp.Glyph"
                         Width="48"
                         Height="48"
                         Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
                         ToolTip="Move Up"
                         Command="{Binding MoveUpCommand}" />
                 <!-- Move down -->
-                <Button Content="&#xe1fd;"
+                <Button Content="MoveDown.Glyph"
                         Width="48"
                         Height="48"
                         Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
                         ToolTip="Move Down"
                         Command="{Binding MoveDownCommand}" />
                 <!-- Move to Bottom -->
-                <Button Content="&#xe118;"
+                <Button Content="MoveToBottom.Glyph"
                         Width="48"
                         Height="48"
                         Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
                         ToolTip="Move to Bottom"
                         Command="{Binding MoveToBottomCommand}" />
                 <!-- Reverse Order -->
-                <Button Content="&#xe1ca;"
+                <Button Content="Reverse.Glyph"
                         Width="48"
                         Height="48"
                         Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
                         ToolTip="Reverse Order"
                         Command="{Binding ReverseValuesCommand}" />
                 <!-- Delete -->
-                <Button Content="&#xe107;"
+                <Button Content="Delete.Glyph"
                         Width="48"
                         Height="48"
                         Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
@@ -420,9 +404,12 @@
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        Text="{Binding AppModeTitle}" />
-            <StackPanel Grid.Row="2" HorizontalAlignment="Center"
+            <StackPanel Grid.Row="2"
+                        HorizontalAlignment="Center"
                         VerticalAlignment="Center">
-                <Image Source="/NVMSharp;component/Resources/Images/nvmsharp_title.png" Width="400" Height="128"></Image>
+                <Image Source="/NVMSharp;component/Resources/Images/nvmsharp_title.png"
+                       Width="400"
+                       Height="128"></Image>
                 <TextBlock HorizontalAlignment="Center"
                            VerticalAlignment="Center"
                            Text="version 2.0"
@@ -435,7 +422,8 @@
                            Margin="0,-10,0,10"></TextBlock>
             </StackPanel>
         </Grid>
-        <wpfspark:FluidProgressBar Grid.ColumnSpan="2" VerticalAlignment="Top"
+        <wpfspark:FluidProgressBar Grid.ColumnSpan="2"
+                                   VerticalAlignment="Top"
                                    Margin="0,44,0,-44"
                                    Foreground="White"
                                    Visibility="{Binding Path=IsProgressVisible, Converter={StaticResource BooleanToVisibilityHelper}}"></wpfspark:FluidProgressBar>
@@ -452,11 +440,12 @@
                 <!-- Menu (hamburger) button -->
                 <RadioButton Style="{StaticResource SplitViewMenuButtonStyle}"
                              Click="OnMenuButtonClicked"
-                             BorderThickness="0" />
+                             BorderThickness="0" 
+                             Tag="Menu.Glyph"/>
 
                 <!-- User button -->
                 <RadioButton x:Name="UserButton"
-                             Tag="&#xE13D;"
+                             Tag="User.Glyph"
                              Content="User"
                              Style="{StaticResource SplitViewNavButtonStyle}"
                              Checked="OnViewUserVariables"
@@ -465,7 +454,7 @@
 
                 <!-- System button -->
                 <RadioButton x:Name="SystemButton"
-                             Tag="&#xec4e;"
+                             Tag="System.Glyph"
                              Content="System"
                              Style="{StaticResource SplitViewNavButtonStyle}"
                              Foreground="Black"
@@ -475,7 +464,7 @@
 
                 <!-- Import button -->
                 <RadioButton x:Name="ImportButton"
-                             Tag="&#xe976;"
+                             Tag="Import.Glyph"
                              Content="Import"
                              Style="{StaticResource SplitViewNavButtonStyle}"
                              Checked="OnImportVariables"
@@ -484,7 +473,7 @@
 
                 <!-- Export button -->
                 <RadioButton x:Name="ExportButton"
-                             Tag="&#xea4e;"
+                             Tag="Export.Glyph"
                              Content="Export"
                              SnapsToDevicePixels="True"
                              Style="{StaticResource SplitViewNavButtonStyle}"
@@ -494,7 +483,7 @@
 
                 <!-- About button -->
                 <RadioButton x:Name="AboutButton"
-                             Tag="&#xe946;"
+                             Tag="About.Glyph"
                              Content="About"
                              SnapsToDevicePixels="True"
                              Style="{StaticResource SplitViewNavButtonStyle}"

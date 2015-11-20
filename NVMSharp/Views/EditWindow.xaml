@@ -98,14 +98,14 @@
                          VerticalContentAlignment="Center"
                          Text="{Binding ModifiedValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 <Button Grid.Column="1"
-                        Content="&#xE7C3;"
+                        Content="File.Glyph"
                         Width="32"
                         Height="32"
                         Style="{DynamicResource IconGlyph.Dark.ButtonStyle}"
                         ToolTip="Browse For File..."
                         Click="OnBrowseForFile" />
                 <Button Grid.Column="2"
-                        Content="&#xE8B7;"
+                        Content="Folder.Glyph"
                         Width="32"
                         Height="32"
                         Style="{DynamicResource IconGlyph.Dark.ButtonStyle}"
