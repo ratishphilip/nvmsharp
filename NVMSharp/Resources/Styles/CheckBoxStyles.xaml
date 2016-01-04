@@ -46,7 +46,7 @@ SOFTWARE.
     <SolidColorBrush x:Key="CheckBox.Dark.OptionMark.Foreground"
                      Color="DarkGreen" />
     <SolidColorBrush x:Key="CheckBox.Dark.IndeterminateMark.Foreground"
-                     Color="DarkBlue" />
+                     Color="#2C75FF" />
     <SolidColorBrush x:Key="CheckBox.Dark.Border.Foreground"
                      Color="Maroon" />
 
@@ -95,7 +95,7 @@ SOFTWARE.
                             <ColumnDefinition Width="48" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock x:Name="optionMark"
+                        <!--<TextBlock x:Name="optionMark"
                                    Focusable="False"
                                    Text="&#xEC61;"
                                    Style="{StaticResource CheckBox.Dark.TextBlockStyle}"
@@ -111,7 +111,26 @@ SOFTWARE.
                                    Focusable="False"
                                    Text="&#xEB90;"
                                    Style="{StaticResource CheckBox.Dark.TextBlockStyle}"
-                                   Foreground="{StaticResource CheckBox.Dark.Border.Foreground}" />
+                                   Foreground="{StaticResource CheckBox.Dark.Border.Foreground}" />-->
+                        <Canvas Width="26"
+                                Height="26"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                            <Path x:Name="checkedPath"
+                                  Opacity="0"
+                                  SnapsToDevicePixels="True"
+                                  Fill="{StaticResource CheckBox.Dark.OptionMark.Foreground}"
+                                  Data="F1 M 11.000,20.000 L 5.000,14.000 L 7.000,12.000 L 11.000,16.000 L 19.000,8.000 L 21.000,10.000 L 11.000,20.000 Z M 22.192,3.808 C 17.116,-1.269 8.884,-1.269 3.808,3.808 C -1.269,8.884 -1.269,17.116 3.808,22.192 C 8.884,27.269 17.116,27.269 22.192,22.192 C 27.269,17.116 27.269,8.884 22.192,3.808 Z"></Path>
+                            <Path x:Name="indeterminatePath"
+                                  Opacity="0"
+                                  SnapsToDevicePixels="True"
+                                  Fill="{StaticResource CheckBox.Dark.IndeterminateMark.Foreground}"
+                                  Data="F1 M 20.000,13.000 C 20.000,16.866 16.866,20.000 13.000,20.000 C 9.134,20.000 6.000,16.866 6.000,13.000 C 6.000,9.134 9.134,6.000 13.000,6.000 C 16.866,6.000 20.000,9.134 20.000,13.000 Z M 13.000,24.000 C 6.925,24.000 2.000,19.075 2.000,13.000 C 2.000,6.925 6.925,2.000 13.000,2.000 C 19.075,2.000 24.000,6.925 24.000,13.000 C 24.000,19.075 19.075,24.000 13.000,24.000 Z M 13.000,0.000 C 5.820,0.000 0.000,5.820 0.000,13.000 C 0.000,20.180 5.820,26.000 13.000,26.000 C 20.180,26.000 26.000,20.180 26.000,13.000 C 26.000,5.820 20.180,0.000 13.000,0.000 Z"></Path>
+                            <Path x:Name="uncheckedPath"
+                                  SnapsToDevicePixels="True"
+                                  Fill="{StaticResource CheckBox.Dark.Border.Foreground}"
+                                  Data="F1 M 7.697,20.425 L 5.575,18.303 L 10.879,13.000 L 5.575,7.697 L 7.697,5.575 L 13.000,10.879 L 18.303,5.575 L 20.425,7.697 L 15.121,13.000 L 20.425,18.303 L 18.303,20.425 L 13.000,15.121 L 7.697,20.425 Z M 26.000,13.000 C 26.000,5.820 20.180,0.000 13.000,0.000 C 5.820,0.000 -0.000,5.820 0.000,13.000 C 0.000,20.180 5.820,26.000 13.000,26.000 C 20.180,26.000 26.000,20.180 26.000,13.000 Z"></Path>
+                        </Canvas>
                         <ContentPresenter x:Name="contentPresenter"
                                           Grid.Column="1"
                                           Focusable="False"
@@ -129,14 +148,14 @@ SOFTWARE.
                         </Trigger>
                         <Trigger Property="IsEnabled"
                                  Value="false">
-                            <Setter TargetName="checkBoxBorder"
-                                    Property="Foreground"
+                            <Setter TargetName="uncheckedPath"
+                                    Property="Fill"
                                     Value="{StaticResource CheckBox.Dark.Disabled.Foreground}" />
-                            <Setter TargetName="optionMark"
-                                    Property="Foreground"
+                            <Setter TargetName="checkedPath"
+                                    Property="Fill"
                                     Value="{StaticResource CheckBox.Dark.Disabled.Foreground}" />
-                            <Setter TargetName="indeterminateMark"
-                                    Property="Foreground"
+                            <Setter TargetName="indeterminatePath"
+                                    Property="Fill"
                                     Value="{StaticResource CheckBox.Dark.Disabled.Foreground}" />
                         </Trigger>
                         <Trigger Property="IsPressed"
@@ -144,38 +163,38 @@ SOFTWARE.
                             <Setter TargetName="templateRoot"
                                     Property="Background"
                                     Value="{StaticResource CheckBox.Dark.Pressed.Background}"></Setter>
-                            <Setter TargetName="checkBoxBorder"
-                                    Property="Foreground"
+                            <Setter TargetName="uncheckedPath"
+                                    Property="Fill"
                                     Value="{StaticResource CheckBox.Dark.Pressed.Foreground}" />
-                            <Setter TargetName="optionMark"
-                                    Property="Foreground"
+                            <Setter TargetName="checkedPath"
+                                    Property="Fill"
                                     Value="{StaticResource CheckBox.Dark.Pressed.Foreground}" />
-                            <Setter TargetName="indeterminateMark"
-                                    Property="Foreground"
+                            <Setter TargetName="indeterminatePath"
+                                    Property="Fill"
                                     Value="{StaticResource CheckBox.Dark.Pressed.Foreground}" />
                         </Trigger>
                         <Trigger Property="IsChecked"
                                  Value="true">
                             <Setter Property="Opacity"
-                                    TargetName="optionMark"
+                                    TargetName="checkedPath"
                                     Value="1" />
                             <Setter Property="Opacity"
-                                    TargetName="indeterminateMark"
+                                    TargetName="indeterminatePath"
                                     Value="0" />
                             <Setter Property="Opacity"
-                                    TargetName="checkBoxBorder"
+                                    TargetName="uncheckedPath"
                                     Value="0" />
                         </Trigger>
                         <Trigger Property="IsChecked"
                                  Value="{x:Null}">
                             <Setter Property="Opacity"
-                                    TargetName="optionMark"
+                                    TargetName="checkedPath"
                                     Value="0" />
                             <Setter Property="Opacity"
-                                    TargetName="indeterminateMark"
+                                    TargetName="indeterminatePath"
                                     Value="1" />
                             <Setter Property="Opacity"
-                                    TargetName="checkBoxBorder"
+                                    TargetName="uncheckedPath"
                                     Value="0" />
                         </Trigger>
                     </ControlTemplate.Triggers>

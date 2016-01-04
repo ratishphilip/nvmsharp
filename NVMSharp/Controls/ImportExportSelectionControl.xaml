@@ -58,7 +58,6 @@ SOFTWARE.
                             Orientation="Horizontal">
                     <TextBlock FontSize="16"
                                FontWeight="DemiBold"
-                               VerticalAlignment="Center"
                                Foreground="Red"
                                Margin="4,0,0,0"
                                Text="&#xE1F5;"

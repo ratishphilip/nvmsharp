@@ -27,7 +27,7 @@ SOFTWARE.
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <SolidColorBrush x:Key="Expander.Dark.Static.Background"
-                     Color="#775E6971" />
+                     Color="#335E6971" />
     <SolidColorBrush x:Key="Expander.Dark.Static.Foreground"
                      Color="Black" />
     <SolidColorBrush x:Key="Expander.Dark.Static.Border"
@@ -334,12 +334,16 @@ SOFTWARE.
                                 <ColumnDefinition Width="48" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Border Background="#665E6971"></Border>
-                            <TextBlock x:Name="textContent"
-                                       Focusable="False"
-                                       Text="&#xE26B;"
-                                       Style="{StaticResource Expander.Dark.TextBlockStyle}"
-                                       Margin="{TemplateBinding Padding}" />
+                            <Border Background="#445E6971"></Border>
+                            <Canvas Width="26"
+                                    Height="26"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                                <Path x:Name="arrow"
+                                      SnapsToDevicePixels="True"
+                                      Fill="Black"
+                                      Data="F1 M 7.000,5.000 L 15.000,13.000 L 7.000,21.000 L 9.000,23.000 L 19.000,13.000 L 9.000,3.000 L 7.000,5.000 Z"></Path>
+                            </Canvas>
                             <ContentPresenter Grid.Column="1"
                                               HorizontalAlignment="Left"
                                               Margin="4,0,0,0"
@@ -351,17 +355,17 @@ SOFTWARE.
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked"
                                  Value="true">
-                            <Setter TargetName="textContent"
-                                    Property="Text"
-                                    Value="&#xE228;" />
+                            <Setter TargetName="arrow"
+                                    Property="Data"
+                                    Value="F1 M 21.000,7.000 L 13.000,15.000 L 5.000,7.000 L 3.000,9.000 L 13.000,19.000 L 23.000,9.000 L 21.000,7.000 Z"></Setter>
                         </Trigger>
                         <Trigger Property="IsMouseOver"
                                  Value="true">
                             <Setter TargetName="RootGrid"
                                     Property="Background"
                                     Value="{StaticResource Expander.Dark.MouseOver.Background}"></Setter>
-                            <Setter TargetName="textContent"
-                                    Property="Foreground"
+                            <Setter TargetName="arrow"
+                                    Property="Fill"
                                     Value="{StaticResource Expander.Dark.Static.Foreground}"></Setter>
                         </Trigger>
                         <Trigger Property="IsPressed"
@@ -369,8 +373,8 @@ SOFTWARE.
                             <Setter TargetName="RootGrid"
                                     Property="Background"
                                     Value="{StaticResource Expander.Dark.Pressed.Background}"></Setter>
-                            <Setter TargetName="textContent"
-                                    Property="Foreground"
+                            <Setter TargetName="arrow"
+                                    Property="Fill"
                                     Value="{StaticResource Expander.Dark.Pressed.Foreground}"></Setter>
                         </Trigger>
                         <Trigger Property="IsEnabled"
@@ -378,8 +382,8 @@ SOFTWARE.
                             <Setter TargetName="RootGrid"
                                     Property="Background"
                                     Value="{StaticResource Expander.Dark.Disabled.Background}"></Setter>
-                            <Setter TargetName="textContent"
-                                    Property="Foreground"
+                            <Setter TargetName="arrow"
+                                    Property="Fill"
                                     Value="{StaticResource Expander.Dark.Disabled.Foreground}"></Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -387,7 +391,7 @@ SOFTWARE.
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style x:Key="Expander.Dark.Style"
            TargetType="{x:Type Expander}">
         <Setter Property="Foreground"

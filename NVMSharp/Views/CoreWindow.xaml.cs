@@ -94,6 +94,7 @@ namespace NVMSharp.Views
                 RootGrid.InvalidateVisual();
             };
 
+            // Enable the tooltip for SplitView menu buttons only if the SplitView width is narrow
             SplitViewMenu.SizeChanged += (o, a) =>
                                          {
                                              var isNarrowMenu = (int) SplitViewMenu.Width == (int) SplitViewMenuWidth.Narrow;
