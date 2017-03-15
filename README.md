@@ -1,10 +1,12 @@
 <img alt="NVM# logo" src="https://cloud.githubusercontent.com/assets/7021835/10990698/d2952d18-840a-11e5-993b-228c089e3205.png" />
 
-NVM# is a Windows 10 desktop app (.Net 4.6) which provides an effective way of managing the environment variables. 
+NVM# is a Windows 10 desktop app (dot Net 4.6.2) which provides an effective way of managing the environment variables. 
 
 Managing environment variables has been a tedious task since the early days of Windows. Windows 10 offers very little improvement on the way environment variables were managed (till Windows 8.1). However, I feel that the users should be provided with a better user experience for managing the environment variables. I strongly recommend that environment variables management be added to the Settings app in Windows 10 (coz that's where all the Control Panel features are going to be ultimately)
 
 So I made this app as a proof of concept on how the user experience should be. This app is an update to my previous project NVM in CodeProject (which I wrote 8 years ago!).
+
+> To know the how NVMSharp was created check this <a href="http://www.codeproject.com/Articles/1045296/NVMSharp" target="_blank">link</a>.
 
 <img alt="screenshot" src="https://cloud.githubusercontent.com/assets/7021835/10911175/6caccdf8-81f8-11e5-9c6f-e9b71ad4c353.png" />
 
@@ -22,4 +24,3 @@ Till then, feel free to use my app!
 
 Cheers!
 
-P.S. More details about this app <a href="http://www.codeproject.com/Articles/1045296/NVMSharp" target="_blank">here</a>.
