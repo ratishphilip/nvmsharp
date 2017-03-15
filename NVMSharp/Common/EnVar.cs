@@ -279,7 +279,8 @@ namespace NVMSharp.Common
             if (ReferenceEquals(varA, varB))
             {
                 result = true;
-            } else if (((object) varA == null) || ((object) varB == null))
+            }
+            else if (((object) varA == null) || ((object) varB == null))
             {
                 result = false;
             }
