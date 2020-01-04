@@ -20,8 +20,6 @@
     <Resource Include="Resources\Images\nvmsharp.png" />
     <Resource Include="Resources\Images\nvmsharp_title.png" />
   </ItemGroup>
-  <PropertyGroup>
-    <PreBuildEvent>taskkill /F /IM $(TargetName).exe 2&gt;&amp;1 | exit /B 0</PreBuildEvent>
 
 
 </Project>
