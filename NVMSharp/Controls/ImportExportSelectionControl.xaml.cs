@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2015 Ratish Philip 
+﻿// Copyright (c) 2020 Ratish Philip 
 //
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -57,8 +57,8 @@ namespace NVMSharp.Controls
         /// </summary>
         public event RoutedEventHandler SelectionChanged
         {
-            add { AddHandler(SelectionChangedEvent, value); }
-            remove { RemoveHandler(SelectionChangedEvent, value); }
+            add => AddHandler(SelectionChangedEvent, value);
+            remove => RemoveHandler(SelectionChangedEvent, value);
         }
 
         /// <summary>
@@ -108,8 +108,8 @@ namespace NVMSharp.Controls
         /// </summary>
         public string Header
         {
-            get { return (string)GetValue(HeaderProperty); }
-            set { SetValue(HeaderProperty, value); }
+            get => (string)GetValue(HeaderProperty);
+            set => SetValue(HeaderProperty, value);
         }
 
         /// <summary>
@@ -153,8 +153,8 @@ namespace NVMSharp.Controls
         /// </summary>
         public IEnumerable<ImportExportVM> Data
         {
-            get { return (IEnumerable<ImportExportVM>)GetValue(DataProperty); }
-            set { SetValue(DataProperty, value); }
+            get => (IEnumerable<ImportExportVM>)GetValue(DataProperty);
+            set => SetValue(DataProperty, value);
         }
 
         /// <summary>

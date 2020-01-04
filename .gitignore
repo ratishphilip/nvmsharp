@@ -88,6 +88,7 @@ $tf/
 # ReSharper is a .NET coding add-in
 _ReSharper*/
 *.[Rr]e[Ss]harper
+*.DotSettings
 *.DotSettings.user
 
 # JustCode is a .NET coding addin-in
@@ -194,3 +195,5 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+
+

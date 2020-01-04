@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2015 Ratish Philip 
+﻿// Copyright (c) 2020 Ratish Philip 
 //
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,6 +27,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using NVMSharp.Common;
+using NVMSharp.Services;
 using NVMSharp.ViewModel;
 using WPFSpark;
 
@@ -56,6 +57,8 @@ namespace NVMSharp.Views
         {
             // Show the window in normal state
             WindowState = WindowState.Normal;
+
+            ServiceInjector.InjectServices();
 
             _coreViewModel = new CoreViewModel();
             DataContext = _coreViewModel;

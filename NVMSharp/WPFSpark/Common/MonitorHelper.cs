@@ -108,15 +108,10 @@ namespace WPFSpark
             public static readonly RECT Empty = new RECT();
 
             /// <summary> Win32 </summary>
-            public int Width
-            {
-                get { return Math.Abs(right - left); }  // Abs needed for BIDI OS
-            }
+            public int Width => Math.Abs(right - left); // Abs needed for BIDI OS
+
             /// <summary> Win32 </summary>
-            public int Height
-            {
-                get { return bottom - top; }
-            }
+            public int Height => bottom - top;
 
             /// <summary> Win32 </summary>
             public RECT(int left, int top, int right, int bottom)
@@ -138,14 +133,9 @@ namespace WPFSpark
             }
 
             /// <summary> Win32 </summary>
-            public bool IsEmpty
-            {
-                get
-                {
-                    // BUGBUG : On Bidi OS (hebrew arabic) left > right
-                    return left >= right || top >= bottom;
-                }
-            }
+            // BUGBUG : On Bidi OS (hebrew arabic) left > right
+            public bool IsEmpty => left >= right || top >= bottom;
+
             /// <summary> Return a user friendly representation of this struct </summary>
             public override string ToString()
             {

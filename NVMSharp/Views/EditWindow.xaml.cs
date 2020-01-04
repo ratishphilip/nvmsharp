@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2015 Ratish Philip 
+﻿// Copyright (c) 2020 Ratish Philip 
 //
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,8 +24,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using Microsoft.WindowsAPICodePack.Dialogs;
-using Microsoft.WindowsAPICodePack.Shell;
+using System.Windows.Forms;
 using NVMSharp.Common;
 using NVMSharp.ViewModel;
 using WPFSpark;
@@ -88,72 +87,40 @@ namespace NVMSharp.Views
         private void OnBrowseForFile(object sender, RoutedEventArgs e)
         {
             // Create a CommonOpenFileDialog to select files
-            var cfd = new CommonOpenFileDialog
+            var cfd = new OpenFileDialog
             {
-                AllowNonFileSystemItems = true,
-                EnsureReadOnly = true,
-                EnsurePathExists = true,
-                EnsureFileExists = true,
+                CheckPathExists = true,
+                CheckFileExists = true,
                 Multiselect = false, // One file at a time
                 Title = "Select File",
             };
 
-            if (cfd.ShowDialog() == CommonFileDialogResult.Ok)
+            if (cfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                ShellObject selectedObj = null;
-
-                try
-                {
-                    // Try to get the selected item 
-                    selectedObj = cfd.FileAsShellObject;
-                }
-                catch
-                {
-                    //MessageBox.Show("Could not create a ShellObject from the selected item");
-                }
-
-                if (selectedObj != null)
-                {
-                    // Append the deimited path in the value textbox 
-                    valueBox.Text = String.IsNullOrWhiteSpace(valueBox.Text)
-                        ? selectedObj.ParsingName
-                        : $"{valueBox.Text};{selectedObj.ParsingName}";
-                }
+                // Append the deimited path in the value textbox 
+                valueBox.Text = String.IsNullOrWhiteSpace(valueBox.Text)
+                    ? cfd.FileName
+                    : $"{valueBox.Text};{cfd.FileName}";
             }
         }
 
         private void OnBrowseForFolder(object sender, RoutedEventArgs e)
         {
+
             // Display a CommonOpenFileDialog to select only folders  
-            var cfd = new CommonOpenFileDialog
+            var cfd = new FolderBrowserDialog()
             {
-                EnsureReadOnly = true,
-                IsFolderPicker = true,
-                EnsurePathExists = true,
-                AllowNonFileSystemItems = true
+                Description = "Select Folder",
+                ShowNewFolderButton = true,
+                RootFolder = Environment.SpecialFolder.MyComputer
             };
 
-            if (cfd.ShowDialog() == CommonFileDialogResult.Ok)
+            if (cfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                ShellContainer selectedObj = null;
-
-                try
-                {
-                    // Try to get a valid selected item 
-                    selectedObj = cfd.FileAsShellObject as ShellContainer;
-                }
-                catch
-                {
-                    //MessageBox.Show("Could not create a ShellObject from the selected item");
-                }
-
-                if (selectedObj != null)
-                {
-                    // Append the deimited path in the value textbox 
-                    valueBox.Text = String.IsNullOrWhiteSpace(valueBox.Text)
-                        ? selectedObj.ParsingName 
-                        : $"{valueBox.Text};{selectedObj.ParsingName}";
-                }
+                // Append the delimited path in the value textbox 
+                valueBox.Text = String.IsNullOrWhiteSpace(valueBox.Text)
+                    ? cfd.SelectedPath
+                    : $"{valueBox.Text};{cfd.SelectedPath}";
             }
         }
 

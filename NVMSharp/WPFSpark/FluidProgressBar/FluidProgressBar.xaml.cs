@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2015 Ratish Philip 
+﻿// Copyright (c) 2020 Ratish Philip 
 //
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -82,8 +82,8 @@ namespace WPFSpark
         /// </summary>
         public Duration Delay
         {
-            get { return (Duration)GetValue(DelayProperty); }
-            set { SetValue(DelayProperty, value); }
+            get => (Duration)GetValue(DelayProperty);
+            set => SetValue(DelayProperty, value);
         }
 
         /// <summary>
@@ -133,8 +133,8 @@ namespace WPFSpark
         /// </summary>
         public double DotWidth
         {
-            get { return (double)GetValue(DotWidthProperty); }
-            set { SetValue(DotWidthProperty, value); }
+            get => (double)GetValue(DotWidthProperty);
+            set => SetValue(DotWidthProperty, value);
         }
 
         /// <summary>
@@ -178,8 +178,8 @@ namespace WPFSpark
         /// </summary>
         public double DotHeight
         {
-            get { return (double)GetValue(DotHeightProperty); }
-            set { SetValue(DotHeightProperty, value); }
+            get => (double)GetValue(DotHeightProperty);
+            set => SetValue(DotHeightProperty, value);
         }
 
         /// <summary>
@@ -223,8 +223,8 @@ namespace WPFSpark
         /// </summary>
         public double DotRadiusX
         {
-            get { return (double)GetValue(DotRadiusXProperty); }
-            set { SetValue(DotRadiusXProperty, value); }
+            get => (double)GetValue(DotRadiusXProperty);
+            set => SetValue(DotRadiusXProperty, value);
         }
 
         /// <summary>
@@ -268,8 +268,8 @@ namespace WPFSpark
         /// </summary>
         public double DotRadiusY
         {
-            get { return (double)GetValue(DotRadiusYProperty); }
-            set { SetValue(DotRadiusYProperty, value); }
+            get => (double)GetValue(DotRadiusYProperty);
+            set => SetValue(DotRadiusYProperty, value);
         }
 
         /// <summary>
@@ -313,8 +313,8 @@ namespace WPFSpark
         /// </summary>
         public Duration DurationA
         {
-            get { return (Duration)GetValue(DurationAProperty); }
-            set { SetValue(DurationAProperty, value); }
+            get => (Duration)GetValue(DurationAProperty);
+            set => SetValue(DurationAProperty, value);
         }
 
         /// <summary>
@@ -364,8 +364,8 @@ namespace WPFSpark
         /// </summary>
         public Duration DurationB
         {
-            get { return (Duration)GetValue(DurationBProperty); }
-            set { SetValue(DurationBProperty, value); }
+            get => (Duration)GetValue(DurationBProperty);
+            set => SetValue(DurationBProperty, value);
         }
 
         /// <summary>
@@ -415,8 +415,8 @@ namespace WPFSpark
         /// </summary>
         public Duration DurationC
         {
-            get { return (Duration)GetValue(DurationCProperty); }
-            set { SetValue(DurationCProperty, value); }
+            get => (Duration)GetValue(DurationCProperty);
+            set => SetValue(DurationCProperty, value);
         }
 
         /// <summary>
@@ -466,8 +466,8 @@ namespace WPFSpark
         /// </summary>
         public double KeyFrameA
         {
-            get { return (double)GetValue(KeyFrameAProperty); }
-            set { SetValue(KeyFrameAProperty, value); }
+            get => (double)GetValue(KeyFrameAProperty);
+            set => SetValue(KeyFrameAProperty, value);
         }
 
         /// <summary>
@@ -510,8 +510,8 @@ namespace WPFSpark
         /// </summary>
         public double KeyFrameB
         {
-            get { return (double)GetValue(KeyFrameBProperty); }
-            set { SetValue(KeyFrameBProperty, value); }
+            get => (double)GetValue(KeyFrameBProperty);
+            set => SetValue(KeyFrameBProperty, value);
         }
 
         /// <summary>
@@ -554,8 +554,8 @@ namespace WPFSpark
         /// </summary>
         public bool Oscillate
         {
-            get { return (bool)GetValue(OscillateProperty); }
-            set { SetValue(OscillateProperty, value); }
+            get => (bool)GetValue(OscillateProperty);
+            set => SetValue(OscillateProperty, value);
         }
 
         /// <summary>
@@ -604,8 +604,8 @@ namespace WPFSpark
         /// </summary>
         public Duration ReverseDuration
         {
-            get { return (Duration)GetValue(ReverseDurationProperty); }
-            set { SetValue(ReverseDurationProperty, value); }
+            get => (Duration)GetValue(ReverseDurationProperty);
+            set => SetValue(ReverseDurationProperty, value);
         }
 
         /// <summary>
@@ -652,8 +652,8 @@ namespace WPFSpark
         /// </summary>
         public Duration TotalDuration
         {
-            get { return (Duration)GetValue(TotalDurationProperty); }
-            set { SetValue(TotalDurationProperty, value); }
+            get => (Duration)GetValue(TotalDurationProperty);
+            set => SetValue(TotalDurationProperty, value);
         }
 
         /// <summary>

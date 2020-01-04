@@ -13,18 +13,14 @@ namespace Microsoft.Shell
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.IO;
-    using System.Runtime.Remoting;
-    using System.Runtime.Remoting.Channels;
-    using System.Runtime.Remoting.Channels.Ipc;
+    using System.Runtime.InteropServices;
     using System.Runtime.Serialization.Formatters;
+    using System.Security;
     using System.Threading;
     using System.Windows;
     using System.Windows.Threading;
-    using System.Xml.Serialization;
-    using System.Security;
-    using System.Runtime.InteropServices;
-    using System.ComponentModel;
 
     internal enum WM
     {
@@ -256,10 +252,7 @@ namespace Microsoft.Shell
         /// <summary>
         /// Gets list of command line arguments for the application.
         /// </summary>
-        public static IList<string> CommandLineArgs
-        {
-            get { return commandLineArgs; }
-        }
+        public static IList<string> CommandLineArgs => commandLineArgs;
 
         #endregion
 

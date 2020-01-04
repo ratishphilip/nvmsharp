@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2015 Ratish Philip 
+﻿// Copyright (c) 2020 Ratish Philip 
 //
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -45,8 +45,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public bool HasConflict
         {
-            get { return _hasConflict; }
-            set { this.SetProperty(ref this._hasConflict, value); }
+            get => _hasConflict;
+            set => this.SetProperty(ref this._hasConflict, value);
         }
 
         #endregion
@@ -62,8 +62,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public bool? IsSelected
         {
-            get { return _isSelected; }
-            set { this.SetProperty(ref this._isSelected, value); }
+            get => _isSelected;
+            set => this.SetProperty(ref this._isSelected, value);
         }
 
         #endregion
@@ -78,8 +78,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public string Key
         {
-            get { return _key; }
-            set { this.SetProperty(ref this._key, value); }
+            get => _key;
+            set => this.SetProperty(ref this._key, value);
         }
 
         #endregion
@@ -94,8 +94,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public string Data
         {
-            get { return _data; }
-            set { this.SetProperty(ref this._data, value); }
+            get => _data;
+            set => this.SetProperty(ref this._data, value);
         }
 
         #endregion

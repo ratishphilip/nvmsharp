@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2015 Ratish Philip 
+﻿// Copyright (c) 2020 Ratish Philip 
 //
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -72,7 +72,7 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public AppMode CurrentAppMode
         {
-            get { return _currentAppMode; }
+            get => _currentAppMode;
             set
             {
                 SetProperty(ref _currentAppMode, value);
@@ -92,8 +92,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public string AppModeTitle
         {
-            get { return _appModeTitle; }
-            set { SetProperty(ref _appModeTitle, value); }
+            get => _appModeTitle;
+            set => SetProperty(ref _appModeTitle, value);
         }
 
         #endregion
@@ -108,8 +108,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public InitResultType InitResult
         {
-            get { return _initResult; }
-            set { SetProperty(ref _initResult, value); }
+            get => _initResult;
+            set => SetProperty(ref _initResult, value);
         }
 
         #endregion
@@ -124,8 +124,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public ObservableCollection<string> DisplayKeys
         {
-            get { return _displayKeys; }
-            set { SetProperty(ref _displayKeys, value); }
+            get => _displayKeys;
+            set => SetProperty(ref _displayKeys, value);
         }
 
         #endregion
@@ -140,7 +140,7 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public string ActiveKey
         {
-            get { return _activeKey; }
+            get => _activeKey;
             set
             {
                 SetProperty(ref _activeKey, value);
@@ -160,8 +160,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public ObservableCollection<string> DisplayValues
         {
-            get { return _displayValues; }
-            set { SetProperty(ref _displayValues, value); }
+            get => _displayValues;
+            set => SetProperty(ref _displayValues, value);
         }
 
         #endregion
@@ -176,11 +176,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public string ActiveValue
         {
-            get { return _activeValue; }
-            set
-            {
-                SetProperty(ref _activeValue, value);
-            }
+            get => _activeValue;
+            set => SetProperty(ref _activeValue, value);
         }
 
         #endregion
@@ -196,8 +193,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public ModificationModeType ModificationMode
         {
-            get { return _modificationMode; }
-            set { SetProperty(ref _modificationMode, value); }
+            get => _modificationMode;
+            set => SetProperty(ref _modificationMode, value);
         }
 
         #endregion
@@ -212,8 +209,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public string ModificationTitle
         {
-            get { return _modificationTitle; }
-            set { SetProperty(ref _modificationTitle, value); }
+            get => _modificationTitle;
+            set => SetProperty(ref _modificationTitle, value);
         }
 
         #endregion
@@ -228,7 +225,7 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public string ModifiedKey
         {
-            get { return _modifiedKey; }
+            get => _modifiedKey;
             set
             {
                 SetProperty(ref _modifiedKey, value);
@@ -248,7 +245,7 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public string ModifiedValue
         {
-            get { return _modifiedValue; }
+            get => _modifiedValue;
             set
             {
                 SetProperty(ref _modifiedValue, value);
@@ -269,8 +266,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public string ValidationMessage
         {
-            get { return _validationMessage; }
-            set { SetProperty(ref _validationMessage, value); }
+            get => _validationMessage;
+            set => SetProperty(ref _validationMessage, value);
         }
 
         #endregion
@@ -286,8 +283,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public bool HasUserImportVariables
         {
-            get { return _hasUserImportVariables; }
-            set { SetProperty(ref _hasUserImportVariables, value); }
+            get => _hasUserImportVariables;
+            set => SetProperty(ref _hasUserImportVariables, value);
         }
 
         #endregion
@@ -303,8 +300,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public bool HasSystemImportVariables
         {
-            get { return _hasSystemImportVariables; }
-            set { SetProperty(ref _hasSystemImportVariables, value); }
+            get => _hasSystemImportVariables;
+            set => SetProperty(ref _hasSystemImportVariables, value);
         }
 
         #endregion
@@ -320,8 +317,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public bool HasUserExportVariables
         {
-            get { return _hasUserExportVariables; }
-            set { SetProperty(ref _hasUserExportVariables, value); }
+            get => _hasUserExportVariables;
+            set => SetProperty(ref _hasUserExportVariables, value);
         }
 
         #endregion
@@ -337,8 +334,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public bool HasSystemExportVariables
         {
-            get { return _hasSystemExportVariables; }
-            set { SetProperty(ref _hasSystemExportVariables, value); }
+            get => _hasSystemExportVariables;
+            set => SetProperty(ref _hasSystemExportVariables, value);
         }
 
         #endregion
@@ -353,8 +350,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public ObservableCollection<ImportExportVM> UserImportVariables
         {
-            get { return _userImportVariables; }
-            set { SetProperty(ref _userImportVariables, value); }
+            get => _userImportVariables;
+            set => SetProperty(ref _userImportVariables, value);
         }
 
         #endregion
@@ -369,8 +366,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public ObservableCollection<ImportExportVM> SystemImportVariables
         {
-            get { return _systemImportVariables; }
-            set { SetProperty(ref _systemImportVariables, value); }
+            get => _systemImportVariables;
+            set => SetProperty(ref _systemImportVariables, value);
         }
 
         #endregion
@@ -385,8 +382,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public ObservableCollection<ImportExportVM> UserExportVariables
         {
-            get { return _userExportVariables; }
-            set { SetProperty(ref _userExportVariables, value); }
+            get => _userExportVariables;
+            set => SetProperty(ref _userExportVariables, value);
         }
 
         #endregion
@@ -401,8 +398,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public ObservableCollection<ImportExportVM> SystemExportVariables
         {
-            get { return _systemExportVariables; }
-            set { SetProperty(ref _systemExportVariables, value); }
+            get => _systemExportVariables;
+            set => SetProperty(ref _systemExportVariables, value);
         }
 
         #endregion
@@ -418,8 +415,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public string ImportSource
         {
-            get { return _importSource; }
-            set { this.SetProperty(ref this._importSource, value); }
+            get => _importSource;
+            set => this.SetProperty(ref this._importSource, value);
         }
 
         #endregion
@@ -435,8 +432,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public string InitImportStatus
         {
-            get { return _initImportStatus; }
-            set { this.SetProperty(ref this._initImportStatus, value); }
+            get => _initImportStatus;
+            set => this.SetProperty(ref this._initImportStatus, value);
         }
 
         #endregion
@@ -451,8 +448,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public bool HasInitImportStatus
         {
-            get { return _hasInitImportStatus; }
-            set { this.SetProperty(ref this._hasInitImportStatus, value); }
+            get => _hasInitImportStatus;
+            set => this.SetProperty(ref this._hasInitImportStatus, value);
         }
 
         #endregion
@@ -468,8 +465,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public bool HasImportConflicts
         {
-            get { return _hasImportConflicts; }
-            set { this.SetProperty(ref this._hasImportConflicts, value); }
+            get => _hasImportConflicts;
+            set => this.SetProperty(ref this._hasImportConflicts, value);
         }
 
         #endregion
@@ -484,8 +481,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public string ImportStatus
         {
-            get { return _importStatus; }
-            set { this.SetProperty(ref this._importStatus, value); }
+            get => _importStatus;
+            set => this.SetProperty(ref this._importStatus, value);
         }
 
         #endregion
@@ -501,8 +498,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public string InitExportStatus
         {
-            get { return _initExportStatus; }
-            set { SetProperty(ref _initExportStatus, value); }
+            get => _initExportStatus;
+            set => SetProperty(ref _initExportStatus, value);
         }
 
         #endregion
@@ -518,8 +515,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public string ExportStatus
         {
-            get { return _exportStatus; }
-            set { this.SetProperty(ref this._exportStatus, value); }
+            get => _exportStatus;
+            set => this.SetProperty(ref this._exportStatus, value);
         }
 
         #endregion
@@ -537,8 +534,8 @@ namespace NVMSharp.ViewModel
         /// </summary>
         public bool IsProgressVisible
         {
-            get { return _isProgressVisible; }
-            set { this.SetProperty(ref this._isProgressVisible, value); }
+            get => _isProgressVisible;
+            set => this.SetProperty(ref this._isProgressVisible, value);
         }
 
         #endregion
@@ -1088,8 +1085,8 @@ namespace NVMSharp.ViewModel
         private async void OnInitImport()
         {
             var fileName =
-                await _fileService.ShowOpenFileDialogAsync("Select Source File", ".xml",
-                        Tuple.Create("XML Files", "*.xml"));
+                await _fileService.ShowOpenFileDialogAsync("Select Source File", "xml",
+                        Tuple.Create("XML Files (*.xml)", new List<string>() {"*.xml"}));
 
             if (String.IsNullOrWhiteSpace(fileName))
                 return;
@@ -1160,7 +1157,7 @@ namespace NVMSharp.ViewModel
         {
             var fileName =
                 await _fileService.ShowSaveFileDialogAsync("Save Environment Variable(s) As", ".xml",
-                        Tuple.Create("XML Files", "*.xml"));
+                        Tuple.Create("XML Files", new List<string>() {"*.xml"}));
 
             if (String.IsNullOrWhiteSpace(fileName))
                 return;

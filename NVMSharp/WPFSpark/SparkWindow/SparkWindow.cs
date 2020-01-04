@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2015 Ratish Philip 
+﻿// Copyright (c) 2020 Ratish Philip 
 //
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -75,8 +75,8 @@ namespace WPFSpark
         /// </summary>
         public UIElement TitleImage
         {
-            get { return (UIElement)GetValue(TitleImageProperty); }
-            set { SetValue(TitleImageProperty, value); }
+            get => (UIElement)GetValue(TitleImageProperty);
+            set => SetValue(TitleImageProperty, value);
         }
 
         /// <summary>
@@ -120,8 +120,8 @@ namespace WPFSpark
         /// </summary>
         public Thickness TitleImageMargin
         {
-            get { return (Thickness)GetValue(TitleImageMarginProperty); }
-            set { SetValue(TitleImageMarginProperty, value); }
+            get => (Thickness)GetValue(TitleImageMarginProperty);
+            set => SetValue(TitleImageMarginProperty, value);
         }
 
         /// <summary>
@@ -164,8 +164,8 @@ namespace WPFSpark
         /// </summary>
         public Thickness TitleMargin
         {
-            get { return (Thickness)GetValue(TitleMarginProperty); }
-            set { SetValue(TitleMarginProperty, value); }
+            get => (Thickness)GetValue(TitleMarginProperty);
+            set => SetValue(TitleMarginProperty, value);
         }
 
         /// <summary>
@@ -212,8 +212,8 @@ namespace WPFSpark
         /// </summary>
         public Effect TitleEffect
         {
-            get { return (Effect)GetValue(TitleEffectProperty); }
-            set { SetValue(TitleEffectProperty, value); }
+            get => (Effect)GetValue(TitleEffectProperty);
+            set => SetValue(TitleEffectProperty, value);
         }
 
         /// <summary>
@@ -257,8 +257,8 @@ namespace WPFSpark
         /// </summary>
         public Brush TitleBackground
         {
-            get { return (Brush)GetValue(TitleBackgroundProperty); }
-            set { SetValue(TitleBackgroundProperty, value); }
+            get => (Brush)GetValue(TitleBackgroundProperty);
+            set => SetValue(TitleBackgroundProperty, value);
         }
 
         /// <summary>
@@ -302,8 +302,8 @@ namespace WPFSpark
         /// </summary>
         public WindowMode WindowFrameMode
         {
-            get { return (WindowMode)GetValue(WindowFrameModeProperty); }
-            set { SetValue(WindowFrameModeProperty, value); }
+            get => (WindowMode)GetValue(WindowFrameModeProperty);
+            set => SetValue(WindowFrameModeProperty, value);
         }
 
         /// <summary>
@@ -347,8 +347,8 @@ namespace WPFSpark
         /// </summary>
         public Brush SystemBorderBrush
         {
-            get { return (Brush)GetValue(SystemBorderBrushProperty); }
-            set { SetValue(SystemBorderBrushProperty, value); }
+            get => (Brush)GetValue(SystemBorderBrushProperty);
+            set => SetValue(SystemBorderBrushProperty, value);
         }
 
         /// <summary>
@@ -392,8 +392,8 @@ namespace WPFSpark
         /// </summary>
         public Thickness SystemBorderThickness
         {
-            get { return (Thickness)GetValue(SystemBorderThicknessProperty); }
-            set { SetValue(SystemBorderThicknessProperty, value); }
+            get => (Thickness)GetValue(SystemBorderThicknessProperty);
+            set => SetValue(SystemBorderThicknessProperty, value);
         }
 
         /// <summary>
@@ -437,8 +437,8 @@ namespace WPFSpark
         /// </summary>
         public Brush SystemForeground
         {
-            get { return (Brush)GetValue(SystemForegroundProperty); }
-            set { SetValue(SystemForegroundProperty, value); }
+            get => (Brush)GetValue(SystemForegroundProperty);
+            set => SetValue(SystemForegroundProperty, value);
         }
 
         /// <summary>
@@ -482,8 +482,8 @@ namespace WPFSpark
         /// </summary>
         public Brush SystemBackground
         {
-            get { return (Brush)GetValue(SystemBackgroundProperty); }
-            set { SetValue(SystemBackgroundProperty, value); }
+            get => (Brush)GetValue(SystemBackgroundProperty);
+            set => SetValue(SystemBackgroundProperty, value);
         }
 
         /// <summary>
@@ -527,8 +527,8 @@ namespace WPFSpark
         /// </summary>
         public Brush SystemMouseOverBorderBrush
         {
-            get { return (Brush)GetValue(SystemMouseOverBorderBrushProperty); }
-            set { SetValue(SystemMouseOverBorderBrushProperty, value); }
+            get => (Brush)GetValue(SystemMouseOverBorderBrushProperty);
+            set => SetValue(SystemMouseOverBorderBrushProperty, value);
         }
 
         /// <summary>
@@ -572,8 +572,8 @@ namespace WPFSpark
         /// </summary>
         public Brush SystemMouseOverForeground
         {
-            get { return (Brush)GetValue(SystemMouseOverForegroundProperty); }
-            set { SetValue(SystemMouseOverForegroundProperty, value); }
+            get => (Brush)GetValue(SystemMouseOverForegroundProperty);
+            set => SetValue(SystemMouseOverForegroundProperty, value);
         }
 
         /// <summary>
@@ -617,8 +617,8 @@ namespace WPFSpark
         /// </summary>
         public Brush SystemMouseOverBackground
         {
-            get { return (Brush)GetValue(SystemMouseOverBackgroundProperty); }
-            set { SetValue(SystemMouseOverBackgroundProperty, value); }
+            get => (Brush)GetValue(SystemMouseOverBackgroundProperty);
+            set => SetValue(SystemMouseOverBackgroundProperty, value);
         }
 
         /// <summary>
@@ -662,8 +662,8 @@ namespace WPFSpark
         /// </summary>
         public Brush SystemPressedBorderBrush
         {
-            get { return (Brush)GetValue(SystemPressedBorderBrushProperty); }
-            set { SetValue(SystemPressedBorderBrushProperty, value); }
+            get => (Brush)GetValue(SystemPressedBorderBrushProperty);
+            set => SetValue(SystemPressedBorderBrushProperty, value);
         }
 
         /// <summary>
@@ -707,8 +707,8 @@ namespace WPFSpark
         /// </summary>
         public Thickness SystemPressedBorderThickness
         {
-            get { return (Thickness)GetValue(SystemPressedBorderThicknessProperty); }
-            set { SetValue(SystemPressedBorderThicknessProperty, value); }
+            get => (Thickness)GetValue(SystemPressedBorderThicknessProperty);
+            set => SetValue(SystemPressedBorderThicknessProperty, value);
         }
 
         /// <summary>
@@ -752,8 +752,8 @@ namespace WPFSpark
         /// </summary>
         public Brush SystemPressedForeground
         {
-            get { return (Brush)GetValue(SystemPressedForegroundProperty); }
-            set { SetValue(SystemPressedForegroundProperty, value); }
+            get => (Brush)GetValue(SystemPressedForegroundProperty);
+            set => SetValue(SystemPressedForegroundProperty, value);
         }
 
         /// <summary>
@@ -797,8 +797,8 @@ namespace WPFSpark
         /// </summary>
         public Brush SystemPressedBackground
         {
-            get { return (Brush)GetValue(SystemPressedBackgroundProperty); }
-            set { SetValue(SystemPressedBackgroundProperty, value); }
+            get => (Brush)GetValue(SystemPressedBackgroundProperty);
+            set => SetValue(SystemPressedBackgroundProperty, value);
         }
 
         /// <summary>

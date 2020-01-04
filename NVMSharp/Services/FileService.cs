@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2015 Ratish Philip 
+﻿// Copyright (c) 2020 Ratish Philip 
 //
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,10 +22,11 @@
 // SOFTWARE. 
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using Microsoft.WindowsAPICodePack.Dialogs;
-using Microsoft.WindowsAPICodePack.Shell;
+using System.Windows.Forms;
 using NVMSharp.Services.Interfaces;
 
 namespace NVMSharp.Services
@@ -39,7 +40,7 @@ namespace NVMSharp.Services
             _dispatcherService = service;
         }
 
-        public Task<string> ShowOpenFileDialogAsync(string title, string defaultExtension, params Tuple<string, string>[] extensions)
+        public Task<string> ShowOpenFileDialogAsync(string title, string defaultExtension, params Tuple<string, List<string>>[] extensions)
         {
             var tcs = new TaskCompletionSource<string>();
 
@@ -48,44 +49,46 @@ namespace NVMSharp.Services
                 var result = string.Empty;
 
                 // Create a CommonOpenFileDialog to select source file
-                CommonOpenFileDialog cfd = new CommonOpenFileDialog
+                OpenFileDialog cfd = new OpenFileDialog
                 {
-                    AllowNonFileSystemItems = true,
-                    EnsureReadOnly = true,
-                    EnsurePathExists = true,
-                    EnsureFileExists = true,
-                    DefaultExtension = defaultExtension,
                     Multiselect = false, // One file at a time
                     Title = title ?? "Select File",
+                    CheckFileExists = true,
+                    CheckPathExists = true,
+                    DefaultExt = defaultExtension,
                 };
+
 
                 if ((extensions != null) && (extensions.Any()))
                 {
+                    var sb = new StringBuilder();
+                    var lastExt = extensions.Last();
                     foreach (var ext in extensions)
                     {
-                        cfd.Filters.Add(new CommonFileDialogFilter(ext.Item1, ext.Item2));
+                        sb.Append($"{ext.Item1} | ");
+                        var last = ext.Item2.Last();
+                        foreach (var item in ext.Item2)
+                        {
+                            sb.Append(item);
+                            if (item != last)
+                            {
+                                sb.Append(";");
+                            }
+                        }
+
+                        if (ext != lastExt)
+                        {
+                            sb.Append("|");
+                        }
                     }
+
+                    cfd.Filter = sb.ToString();
                 }
 
-                if (cfd.ShowDialog() == CommonFileDialogResult.Ok)
+                if (cfd.ShowDialog() == DialogResult.OK)
                 {
-                    ShellObject selectedObj = null;
-
-                    try
-                    {
-                        // Try to get the selected item 
-                        selectedObj = cfd.FileAsShellObject;
-                    }
-                    catch
-                    {
-                        //MessageBox.Show("Could not create a ShellObject from the selected item");
-                    }
-
-                    if (selectedObj != null)
-                    {
-                        // Get the file name
-                        result = selectedObj.ParsingName;
-                    }
+                    // Get the file name
+                    result = cfd.FileName;
                 }
 
                 tcs.SetResult(result);
@@ -94,7 +97,7 @@ namespace NVMSharp.Services
             return tcs.Task;
         }
 
-        public Task<string> ShowSaveFileDialogAsync(string title, string defaultExtension, params Tuple<string, string>[] extensions)
+        public Task<string> ShowSaveFileDialogAsync(string title, string defaultExtension, params Tuple<string, List<string>>[] extensions)
         {
             var tcs = new TaskCompletionSource<string>();
 
@@ -103,41 +106,43 @@ namespace NVMSharp.Services
                 var result = string.Empty;
 
                 // Create a CommonSaveFileDialog to select destination file
-                var sfd = new CommonSaveFileDialog
+                var sfd = new SaveFileDialog
                 {
-                    EnsureReadOnly = true,
-                    EnsurePathExists = true,
-                    DefaultExtension = defaultExtension,
+                    CheckPathExists = true,
+                    DefaultExt = defaultExtension,
                     Title = title ?? "Save File",
                 };
 
                 if ((extensions != null) && (extensions.Any()))
                 {
+                    var sb = new StringBuilder();
+                    var lastExt = extensions.Last();
                     foreach (var ext in extensions)
                     {
-                        sfd.Filters.Add(new CommonFileDialogFilter(ext.Item1, ext.Item2));
+                        sb.Append($"{ext.Item1} | ");
+                        var last = ext.Item2.Last();
+                        foreach (var item in ext.Item2)
+                        {
+                            sb.Append(item);
+                            if (item != last)
+                            {
+                                sb.Append(";");
+                            }
+                        }
+
+                        if (ext != lastExt)
+                        {
+                            sb.Append("|");
+                        }
                     }
+
+                    sfd.Filter = sb.ToString();
                 }
 
-                if (sfd.ShowDialog() == CommonFileDialogResult.Ok)
+                if (sfd.ShowDialog() == DialogResult.OK)
                 {
-                    ShellObject selectedObj = null;
-
-                    try
-                    {
-                        // Try to get the selected item 
-                        selectedObj = sfd.FileAsShellObject;
-                    }
-                    catch
-                    {
-                        //MessageBox.Show("Could not create a ShellObject from the selected item");
-                    }
-
-                    if (selectedObj != null)
-                    {
-                        // Get the file name
-                        result = selectedObj.ParsingName;
-                    }
+                    // Get the file name
+                    result = sfd.FileName;
                 }
 
                 tcs.SetResult(result);

@@ -1,495 +1,557 @@
-﻿<wpfspark:SparkWindow x:Class="NVMSharp.Views.CoreWindow"
-                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                      xmlns:local="clr-namespace:NVMSharp"
-                      xmlns:wpfspark="clr-namespace:WPFSpark"
-                      xmlns:converters="clr-namespace:NVMSharp.Converters"
-                      xmlns:controls="clr-namespace:NVMSharp.Controls"
-                      mc:Ignorable="d"
-                      Title="NVM#"
-                      FontSize="16"
-                      Width="1000"
-                      Height="700">
+﻿<wpfspark:SparkWindow
+    x:Class="NVMSharp.Views.CoreWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:NVMSharp.Controls"
+    xmlns:converters="clr-namespace:NVMSharp.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:NVMSharp"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wpfspark="clr-namespace:WPFSpark"
+    Title="NVM#"
+    Width="1000"
+    Height="700"
+    FontSize="16"
+    mc:Ignorable="d">
     <wpfspark:SparkWindow.Resources>
-        <converters:ContentVisibilityConverter x:Key="ContentVisibilityHelper"></converters:ContentVisibilityConverter>
-        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityHelper"></converters:BooleanToVisibilityConverter>
-        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityNegationHelper"
-                                                 IsReverse="True"></converters:BooleanToVisibilityConverter>
+        <converters:ContentVisibilityConverter x:Key="ContentVisibilityHelper" />
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityHelper" />
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityNegationHelper" IsReverse="True" />
     </wpfspark:SparkWindow.Resources>
     <wpfspark:SparkWindow.TitleEffect>
-        <DropShadowEffect BlurRadius="16"
-                          Color="#FFFFFF"
-                          Direction="0"
-                          ShadowDepth="1"
-                          RenderingBias="Quality"></DropShadowEffect>
+        <DropShadowEffect
+            BlurRadius="16"
+            Direction="0"
+            RenderingBias="Quality"
+            ShadowDepth="1"
+            Color="#FFFFFF" />
     </wpfspark:SparkWindow.TitleEffect>
     <wpfspark:SparkWindow.TitleImage>
-        <Image Source="/NVMSharp;component/Resources/Images/nvmsharp.png"
-               Width="24"
-               Height="24"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center"></Image>
+        <Image
+            Width="24"
+            Height="24"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Source="/NVMSharp;component/Resources/Images/nvmsharp.png" />
     </wpfspark:SparkWindow.TitleImage>
-    <Grid x:Name="RootGrid"
-          Background="#DBE6ECF0">
+    <Grid x:Name="RootGrid" Background="#DBE6ECF0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="48"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="48" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Grid x:Name="EnVarGrid"
-              Grid.Column="1"
-              Visibility="{Binding CurrentAppMode, Converter={StaticResource ContentVisibilityHelper}, ConverterParameter=User|System}">
+        <Grid
+            x:Name="EnVarGrid"
+            Grid.Column="1"
+            Visibility="{Binding CurrentAppMode, Converter={StaticResource ContentVisibilityHelper}, ConverterParameter=User|System}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="48"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="48" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition MinWidth="300"
-                                  MaxWidth="500"
-                                  Width="0.2*"></ColumnDefinition>
-                <ColumnDefinition Width="1"></ColumnDefinition>
-                <ColumnDefinition MinWidth="200"
-                                  Width="0.8*"></ColumnDefinition>
+                <ColumnDefinition
+                    Width="0.2*"
+                    MinWidth="300"
+                    MaxWidth="500" />
+                <ColumnDefinition Width="1" />
+                <ColumnDefinition Width="0.8*" MinWidth="200" />
             </Grid.ColumnDefinitions>
-            <Rectangle Grid.ColumnSpan="3"
-                       HorizontalAlignment="Stretch"
-                       VerticalAlignment="Stretch"
-                       Fill="#ff014292"></Rectangle>
-            <TextBlock Foreground="White"
-                       FontSize="22"
-                       Margin="10,9,0,9"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Text="{Binding AppModeTitle}" />
-            <!-- Key Commands -->
-            <StackPanel HorizontalAlignment="Right"
-                        Orientation="Horizontal">
-                <!-- Add New -->
-                <Button Content="Add.Glyph"
-                        Width="48"
-                        Height="48"
-                        Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
-                        ToolTip="New Environment Variable"
-                        Command="{Binding NewKeyCommand}" />
-                <!-- Edit -->
-                <Button Content="Edit.Glyph"
-                        Width="48"
-                        Height="48"
-                        Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
-                        ToolTip="Edit Environment Variable"
-                        Command="{Binding EditKeyCommand}" />
-                <!-- Copy -->
-                <Button Content="Copy.Glyph"
-                        Width="48"
-                        Height="48"
-                        Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
-                        ToolTip="Copy Environment Variable"
-                        Command="{Binding CopyKeyCommand}" />
-                <!-- Delete -->
-                <Button Content="Delete.Glyph"
-                        Width="48"
-                        Height="48"
-                        Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
-                        ToolTip="Delete Environment Variable"
-                        Command="{Binding DeleteKeyCommand}" />
+            <Rectangle
+                Grid.ColumnSpan="3"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Fill="#ff014292" />
+            <TextBlock
+                Margin="10,9,0,9"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="22"
+                Foreground="White"
+                Text="{Binding AppModeTitle}" />
+            <!--  Key Commands  -->
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <!--  Add New  -->
+                <Button
+                    Width="48"
+                    Height="48"
+                    Command="{Binding NewKeyCommand}"
+                    Content="Add.Glyph"
+                    Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
+                    ToolTip="New Environment Variable" />
+                <!--  Edit  -->
+                <Button
+                    Width="48"
+                    Height="48"
+                    Command="{Binding EditKeyCommand}"
+                    Content="Edit.Glyph"
+                    Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
+                    ToolTip="Edit Environment Variable" />
+                <!--  Copy  -->
+                <Button
+                    Width="48"
+                    Height="48"
+                    Command="{Binding CopyKeyCommand}"
+                    Content="Copy.Glyph"
+                    Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
+                    ToolTip="Copy Environment Variable" />
+                <!--  Delete  -->
+                <Button
+                    Width="48"
+                    Height="48"
+                    Command="{Binding DeleteKeyCommand}"
+                    Content="Delete.Glyph"
+                    Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
+                    ToolTip="Delete Environment Variable" />
 
             </StackPanel>
 
-            <!-- KeyValue Commands -->
-            <StackPanel Grid.Column="2"
-                        HorizontalAlignment="Right"
-                        Orientation="Horizontal">
-                <!-- Add New -->
-                <Button Content="Add.Glyph"
-                        Width="48"
-                        Height="48"
-                        Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
-                        ToolTip="Add New Value"
-                        Command="{Binding NewValueCommand}" />
-                <!-- Edit -->
-                <Button Content="Edit.Glyph"
-                        Width="48"
-                        Height="48"
-                        Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
-                        ToolTip="Edit Value"
-                        Command="{Binding EditValueCommand}" />
-                <!-- Copy -->
-                <Button Content="Copy.Glyph"
-                        Width="48"
-                        Height="48"
-                        Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
-                        ToolTip="Copy Value"
-                        Command="{Binding CopyValueCommand}" />
-                <!-- Move to Top -->
-                <Button Content="MoveToTop.Glyph"
-                        Width="48"
-                        Height="48"
-                        Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
-                        ToolTip="Move to Top"
-                        Command="{Binding MoveToTopCommand}" />
-                <!-- Move up -->
-                <Button Content="MoveUp.Glyph"
-                        Width="48"
-                        Height="48"
-                        Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
-                        ToolTip="Move Up"
-                        Command="{Binding MoveUpCommand}" />
-                <!-- Move down -->
-                <Button Content="MoveDown.Glyph"
-                        Width="48"
-                        Height="48"
-                        Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
-                        ToolTip="Move Down"
-                        Command="{Binding MoveDownCommand}" />
-                <!-- Move to Bottom -->
-                <Button Content="MoveToBottom.Glyph"
-                        Width="48"
-                        Height="48"
-                        Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
-                        ToolTip="Move to Bottom"
-                        Command="{Binding MoveToBottomCommand}" />
-                <!-- Reverse Order -->
-                <Button Content="Reverse.Glyph"
-                        Width="48"
-                        Height="48"
-                        Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
-                        ToolTip="Reverse Order"
-                        Command="{Binding ReverseValuesCommand}" />
-                <!-- Delete -->
-                <Button Content="Delete.Glyph"
-                        Width="48"
-                        Height="48"
-                        Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
-                        ToolTip="Delete Value"
-                        Command="{Binding DeleteValueCommand}" />
+            <!--  KeyValue Commands  -->
+            <StackPanel
+                Grid.Column="2"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal">
+                <!--  Add New  -->
+                <Button
+                    Width="48"
+                    Height="48"
+                    Command="{Binding NewValueCommand}"
+                    Content="Add.Glyph"
+                    Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
+                    ToolTip="Add New Value" />
+                <!--  Edit  -->
+                <Button
+                    Width="48"
+                    Height="48"
+                    Command="{Binding EditValueCommand}"
+                    Content="Edit.Glyph"
+                    Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
+                    ToolTip="Edit Value" />
+                <!--  Copy  -->
+                <Button
+                    Width="48"
+                    Height="48"
+                    Command="{Binding CopyValueCommand}"
+                    Content="Copy.Glyph"
+                    Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
+                    ToolTip="Copy Value" />
+                <!--  Move to Top  -->
+                <Button
+                    Width="48"
+                    Height="48"
+                    Command="{Binding MoveToTopCommand}"
+                    Content="MoveToTop.Glyph"
+                    Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
+                    ToolTip="Move to Top" />
+                <!--  Move up  -->
+                <Button
+                    Width="48"
+                    Height="48"
+                    Command="{Binding MoveUpCommand}"
+                    Content="MoveUp.Glyph"
+                    Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
+                    ToolTip="Move Up" />
+                <!--  Move down  -->
+                <Button
+                    Width="48"
+                    Height="48"
+                    Command="{Binding MoveDownCommand}"
+                    Content="MoveDown.Glyph"
+                    Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
+                    ToolTip="Move Down" />
+                <!--  Move to Bottom  -->
+                <Button
+                    Width="48"
+                    Height="48"
+                    Command="{Binding MoveToBottomCommand}"
+                    Content="MoveToBottom.Glyph"
+                    Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
+                    ToolTip="Move to Bottom" />
+                <!--  Reverse Order  -->
+                <Button
+                    Width="48"
+                    Height="48"
+                    Command="{Binding ReverseValuesCommand}"
+                    Content="Reverse.Glyph"
+                    Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
+                    ToolTip="Reverse Order" />
+                <!--  Delete  -->
+                <Button
+                    Width="48"
+                    Height="48"
+                    Command="{Binding DeleteValueCommand}"
+                    Content="Delete.Glyph"
+                    Style="{DynamicResource IconGlyph.Light.ButtonStyle}"
+                    ToolTip="Delete Value" />
 
             </StackPanel>
-            <ListBox Grid.Row="1"
-                     Grid.Column="0"
-                     ItemsSource="{Binding Path=DisplayKeys}"
-                     SelectedValue="{Binding Path=ActiveKey, Mode=TwoWay}"
-                     Margin="0"
-                     BorderThickness="0"
-                     Padding="0"
-                     Background="Transparent"
-                     HorizontalAlignment="Stretch"
-                     VerticalAlignment="Stretch"
-                     Style="{DynamicResource ListBox.Light.Style}"></ListBox>
-            <GridSplitter Grid.Row="1"
-                          Width="2"
-                          ResizeBehavior="PreviousAndNext"
-                          ResizeDirection="Columns"
-                          VerticalAlignment="Stretch"
-                          Grid.Column="1"
-                          Grid.RowSpan="2" />
-            <ListBox Grid.Row="1"
-                     Grid.Column="2"
-                     Margin="0"
-                     BorderThickness="0"
-                     Padding="0"
-                     Background="#77FFFFFF"
-                     ItemsSource="{Binding Path=DisplayValues}"
-                     SelectedValue="{Binding Path=ActiveValue, Mode=TwoWay}"
-                     Style="{DynamicResource ListBox.Light.Style}"></ListBox>
+            <ListBox
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="0"
+                Padding="0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="Transparent"
+                BorderThickness="0"
+                ItemsSource="{Binding Path=DisplayKeys}"
+                SelectedValue="{Binding Path=ActiveKey, Mode=TwoWay}"
+                Style="{DynamicResource ListBox.Light.Style}" />
+            <GridSplitter
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                Width="2"
+                VerticalAlignment="Stretch"
+                ResizeBehavior="PreviousAndNext"
+                ResizeDirection="Columns" />
+            <ListBox
+                Grid.Row="1"
+                Grid.Column="2"
+                Margin="0"
+                Padding="0"
+                Background="#77FFFFFF"
+                BorderThickness="0"
+                ItemsSource="{Binding Path=DisplayValues}"
+                SelectedValue="{Binding Path=ActiveValue, Mode=TwoWay}"
+                Style="{DynamicResource ListBox.Light.Style}" />
         </Grid>
-        <Grid x:Name="ImportGrid"
-              Grid.Column="1"
-              Visibility="{Binding CurrentAppMode, Converter={StaticResource ContentVisibilityHelper}, ConverterParameter=Import}">
+        <Grid
+            x:Name="ImportGrid"
+            Grid.Column="1"
+            Visibility="{Binding CurrentAppMode, Converter={StaticResource ContentVisibilityHelper}, ConverterParameter=Import}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="48"></RowDefinition>
-                <RowDefinition Height="48"></RowDefinition>
-                <RowDefinition Height="48"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="48"></RowDefinition>
+                <RowDefinition Height="48" />
+                <RowDefinition Height="48" />
+                <RowDefinition Height="48" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="48" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="166"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="166" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Rectangle Grid.ColumnSpan="2"
-                       HorizontalAlignment="Stretch"
-                       VerticalAlignment="Stretch"
-                       Fill="#ff014292"></Rectangle>
-            <TextBlock Foreground="White"
-                       FontSize="22"
-                       Margin="10,9,0,9"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Text="{Binding AppModeTitle}" />
-            <Button x:Name="loadSourceBtn"
-                    Grid.Row="1"
-                    Width="150"
-                    Height="32"
-                    Content="Select File to Import"
-                    IsDefault="true"
-                    FontSize="14"
-                    Margin="8,0"
-                    HorizontalAlignment="Left"
-                    Command="{Binding InitImportCommand}"></Button>
-            <TextBlock Grid.Row="1"
-                       Grid.Column="1"
-                       FontSize="14"
-                       VerticalAlignment="Center"
-                       Text="{Binding ImportSource, NotifyOnTargetUpdated=True}"
-                       TargetUpdated="OnImportSourceChanged"
-                       TextTrimming="CharacterEllipsis"
-                       SizeChanged="OnTextSizeChanged"
-                       Margin="4,0"></TextBlock>
-            <Border Grid.Row="2"
-                    Grid.ColumnSpan="2"
-                    Background="#FFFFFF"></Border>
-            <Border Grid.Row="2"
-                    Grid.ColumnSpan="2"
-                    Background="#CCCCCC"
-                    Visibility="{Binding Path=HasInitImportStatus, Converter={StaticResource BooleanToVisibilityHelper}}"></Border>
-            <TextBlock Grid.Row="2"
-                       Grid.ColumnSpan="2"
-                       Text="{Binding InitImportStatus}"
-                       Margin="8,0"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"></TextBlock>
-            <Border Grid.Row="3"
-                    Grid.ColumnSpan="2"
-                    Background="#FFFFFF"></Border>
-            <ScrollViewer Grid.Row="3"
-                          Grid.ColumnSpan="2"
-                          VerticalScrollBarVisibility="Auto"
-                          PreviewMouseWheel="OnPreviewMouseWheel">
+            <Rectangle
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Fill="#ff014292" />
+            <TextBlock
+                Margin="10,9,0,9"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="22"
+                Foreground="White"
+                Text="{Binding AppModeTitle}" />
+            <Button
+                x:Name="loadSourceBtn"
+                Grid.Row="1"
+                Width="150"
+                Height="32"
+                Margin="8,0"
+                HorizontalAlignment="Left"
+                Command="{Binding InitImportCommand}"
+                Content="Select File to Import"
+                FontSize="14"
+                IsDefault="true" />
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="4,0"
+                VerticalAlignment="Center"
+                FontSize="14"
+                SizeChanged="OnTextSizeChanged"
+                TargetUpdated="OnImportSourceChanged"
+                Text="{Binding ImportSource, NotifyOnTargetUpdated=True}"
+                TextTrimming="CharacterEllipsis" />
+            <Border
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Background="#FFFFFF" />
+            <Border
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Background="#CCCCCC"
+                Visibility="{Binding Path=HasInitImportStatus, Converter={StaticResource BooleanToVisibilityHelper}}" />
+            <TextBlock
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Margin="8,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Text="{Binding InitImportStatus}" />
+            <Border
+                Grid.Row="3"
+                Grid.ColumnSpan="2"
+                Background="#FFFFFF" />
+            <ScrollViewer
+                Grid.Row="3"
+                Grid.ColumnSpan="2"
+                PreviewMouseWheel="OnPreviewMouseWheel"
+                VerticalScrollBarVisibility="Auto">
                 <StackPanel>
-                    <controls:ImportExportSelectionControl x:Name="UserImportCtrl"
-                                                           Header="User"
-                                                           Data="{Binding UserImportVariables}"
-                                                           SelectionChanged="OnImportSelectionChanged"
-                                                           Visibility="{Binding Path=HasUserImportVariables, Converter={StaticResource BooleanToVisibilityHelper}}"></controls:ImportExportSelectionControl>
-                    <controls:ImportExportSelectionControl x:Name="SystemImportCtrl"
-                                                           Header="System"
-                                                           Data="{Binding SystemImportVariables}"
-                                                           SelectionChanged="OnImportSelectionChanged"
-                                                           Visibility="{Binding Path=HasSystemImportVariables, Converter={StaticResource BooleanToVisibilityHelper}}"></controls:ImportExportSelectionControl>
+                    <controls:ImportExportSelectionControl
+                        x:Name="UserImportCtrl"
+                        Data="{Binding UserImportVariables}"
+                        Header="User"
+                        SelectionChanged="OnImportSelectionChanged"
+                        Visibility="{Binding Path=HasUserImportVariables, Converter={StaticResource BooleanToVisibilityHelper}}" />
+                    <controls:ImportExportSelectionControl
+                        x:Name="SystemImportCtrl"
+                        Data="{Binding SystemImportVariables}"
+                        Header="System"
+                        SelectionChanged="OnImportSelectionChanged"
+                        Visibility="{Binding Path=HasSystemImportVariables, Converter={StaticResource BooleanToVisibilityHelper}}" />
                 </StackPanel>
             </ScrollViewer>
-            <TextBlock Grid.Row="4"
-                       Grid.ColumnSpan="2"
-                       Text="{Binding ImportStatus}"
-                       Margin="8,0"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"></TextBlock>
-            <StackPanel Grid.Row="4"
-                        Grid.Column="1"
-                        HorizontalAlignment="Right"
-                        Orientation="Horizontal">
-                <Button Width="100"
-                        Height="32"
-                        Content="Merge"
-                        IsDefault="true"
-                        FontSize="14"
-                        Margin="8,0"
-                        Command="{Binding MergeImportCommand}"
-                        ToolTip="Merge conflicting enviroment variables"
-                        Visibility="{Binding Path=HasImportConflicts, Converter={StaticResource BooleanToVisibilityHelper}}"></Button>
-                <Button Width="100"
-                        Height="32"
-                        Content="Replace"
-                        IsDefault="true"
-                        FontSize="14"
-                        Margin="8,0"
-                        Command="{Binding ImportCommand}"
-                        ToolTip="Replace conflicting enviroment variables"
-                        Visibility="{Binding Path=HasImportConflicts, Converter={StaticResource BooleanToVisibilityHelper}}"></Button>
-                <Button Width="100"
-                        Height="32"
-                        Content="Discard"
-                        IsDefault="true"
-                        FontSize="14"
-                        Margin="8,0"
-                        Command="{Binding ImportDiscardCommand}"
-                        ToolTip="Import only non-conflicting enviroment variables"
-                        Visibility="{Binding Path=HasImportConflicts, Converter={StaticResource BooleanToVisibilityHelper}}"></Button>
-                <Button Width="100"
-                        Height="32"
-                        Content="Import"
-                        IsDefault="true"
-                        FontSize="14"
-                        Margin="8,0"
-                        Command="{Binding ImportCommand}"
-                        ToolTip="Import environment variables"
-                        Visibility="{Binding Path=HasImportConflicts, Converter={StaticResource BooleanToVisibilityNegationHelper}}"></Button>
-                <Button Width="100"
-                        Height="32"
-                        Content="Clear"
-                        IsDefault="true"
-                        FontSize="14"
-                        Margin="8,0"
-                        ToolTip="Don't import anything"
-                        Command="{Binding ClearImportCommand}"></Button>
-            </StackPanel>
-        </Grid>
-        <Grid x:Name="ExportGrid"
-              Grid.Column="1"
-              Visibility="{Binding CurrentAppMode, Converter={StaticResource ContentVisibilityHelper}, ConverterParameter=Export}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="48"></RowDefinition>
-                <RowDefinition Height="48"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="48"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Rectangle HorizontalAlignment="Stretch"
-                       VerticalAlignment="Stretch"
-                       Fill="#ff014292"></Rectangle>
-            <TextBlock Foreground="White"
-                       FontSize="22"
-                       Margin="10,9,0,9"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Text="{Binding AppModeTitle}" />
-            <Border Grid.Row="1"
-                    Background="#CCCCCC"></Border>
-            <TextBlock Grid.Row="1"
-                       Text="{Binding InitExportStatus}"
-                       Margin="8,0"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"></TextBlock>
-            <Border Grid.Row="2"
-                    Background="#FFFFFF"></Border>
-            <ScrollViewer Grid.Row="2"
-                          VerticalScrollBarVisibility="Auto"
-                          PreviewMouseWheel="OnPreviewMouseWheel">
-                <StackPanel>
-                    <controls:ImportExportSelectionControl x:Name="UserExportCtrl"
-                                                           Header="User"
-                                                           Data="{Binding UserExportVariables}"
-                                                           SelectionChanged="OnExportSelectionChanged"
-                                                           Visibility="{Binding Path=HasUserExportVariables, Converter={StaticResource BooleanToVisibilityHelper}}"></controls:ImportExportSelectionControl>
-                    <controls:ImportExportSelectionControl x:Name="SystemExportCtrl"
-                                                           Header="System"
-                                                           Data="{Binding SystemExportVariables}"
-                                                           SelectionChanged="OnExportSelectionChanged"
-                                                           Visibility="{Binding Path=HasSystemExportVariables, Converter={StaticResource BooleanToVisibilityHelper}}"></controls:ImportExportSelectionControl>
-                </StackPanel>
-            </ScrollViewer>
-            <TextBlock Grid.Row="3"
-                       Grid.ColumnSpan="2"
-                       Text="{Binding ExportStatus}"
-                       Margin="8,0"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"></TextBlock>
-            <Button Grid.Row="3"
+            <TextBlock
+                Grid.Row="4"
+                Grid.ColumnSpan="2"
+                Margin="8,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Text="{Binding ImportStatus}" />
+            <StackPanel
+                Grid.Row="4"
+                Grid.Column="1"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal">
+                <Button
                     Width="100"
                     Height="32"
-                    Content="Export"
-                    IsDefault="true"
-                    FontSize="14"
                     Margin="8,0"
-                    HorizontalAlignment="Right"
-                    Command="{Binding ExportCommand}"></Button>
-        </Grid>
-        <Grid x:Name="AboutGrid"
-              Grid.Column="1"
-              Visibility="{Binding CurrentAppMode, Converter={StaticResource ContentVisibilityHelper}, ConverterParameter=About}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="48"></RowDefinition>
-                <RowDefinition Height="48"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="48"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Rectangle Grid.ColumnSpan="3"
-                       HorizontalAlignment="Stretch"
-                       VerticalAlignment="Stretch"
-                       Fill="#ff014292"></Rectangle>
-            <TextBlock Foreground="White"
-                       FontSize="22"
-                       Margin="10,9,0,9"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Text="{Binding AppModeTitle}" />
-            <StackPanel Grid.Row="2"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center">
-                <Image Source="/NVMSharp;component/Resources/Images/nvmsharp_title.png"
-                       Width="400"
-                       Height="128"></Image>
-                <TextBlock HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Text="version 2.0"
-                           Margin="60,-25,-60,25"
-                           FontSize="18" />
-                <TextBlock HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Text="© 2015 Ratish Philip"
-                           FontSize="22"
-                           Margin="0,-10,0,10"></TextBlock>
+                    Command="{Binding MergeImportCommand}"
+                    Content="Merge"
+                    FontSize="14"
+                    IsDefault="true"
+                    ToolTip="Merge conflicting enviroment variables"
+                    Visibility="{Binding Path=HasImportConflicts, Converter={StaticResource BooleanToVisibilityHelper}}" />
+                <Button
+                    Width="100"
+                    Height="32"
+                    Margin="8,0"
+                    Command="{Binding ImportCommand}"
+                    Content="Replace"
+                    FontSize="14"
+                    IsDefault="true"
+                    ToolTip="Replace conflicting enviroment variables"
+                    Visibility="{Binding Path=HasImportConflicts, Converter={StaticResource BooleanToVisibilityHelper}}" />
+                <Button
+                    Width="100"
+                    Height="32"
+                    Margin="8,0"
+                    Command="{Binding ImportDiscardCommand}"
+                    Content="Discard"
+                    FontSize="14"
+                    IsDefault="true"
+                    ToolTip="Import only non-conflicting enviroment variables"
+                    Visibility="{Binding Path=HasImportConflicts, Converter={StaticResource BooleanToVisibilityHelper}}" />
+                <Button
+                    Width="100"
+                    Height="32"
+                    Margin="8,0"
+                    Command="{Binding ImportCommand}"
+                    Content="Import"
+                    FontSize="14"
+                    IsDefault="true"
+                    ToolTip="Import environment variables"
+                    Visibility="{Binding Path=HasImportConflicts, Converter={StaticResource BooleanToVisibilityNegationHelper}}" />
+                <Button
+                    Width="100"
+                    Height="32"
+                    Margin="8,0"
+                    Command="{Binding ClearImportCommand}"
+                    Content="Clear"
+                    FontSize="14"
+                    IsDefault="true"
+                    ToolTip="Don't import anything" />
             </StackPanel>
         </Grid>
-        <wpfspark:FluidProgressBar Grid.ColumnSpan="2"
-                                   VerticalAlignment="Top"
-                                   Margin="0,44,0,-44"
-                                   Foreground="White"
-                                   Visibility="{Binding Path=IsProgressVisible, Converter={StaticResource BooleanToVisibilityHelper}}"></wpfspark:FluidProgressBar>
-        <Grid x:Name="SplitViewMenu"
-              ZIndex="4"
-              Grid.ColumnSpan="2"
-              Width="48"
-              HorizontalAlignment="Left"
-              VerticalAlignment="Stretch"
-              Background="#F2F2F2">
-            <StackPanel HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        Background="#F2F2F2">
-                <!-- Menu (hamburger) button -->
-                <RadioButton Style="{StaticResource SplitViewMenuButtonStyle}"
-                             Click="OnMenuButtonClicked"
-                             BorderThickness="0" 
-                             Tag="Menu.Glyph"/>
+        <Grid
+            x:Name="ExportGrid"
+            Grid.Column="1"
+            Visibility="{Binding CurrentAppMode, Converter={StaticResource ContentVisibilityHelper}, ConverterParameter=Export}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48" />
+                <RowDefinition Height="48" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="48" />
+            </Grid.RowDefinitions>
+            <Rectangle
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Fill="#ff014292" />
+            <TextBlock
+                Margin="10,9,0,9"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="22"
+                Foreground="White"
+                Text="{Binding AppModeTitle}" />
+            <Border Grid.Row="1" Background="#CCCCCC" />
+            <TextBlock
+                Grid.Row="1"
+                Margin="8,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Text="{Binding InitExportStatus}" />
+            <Border Grid.Row="2" Background="#FFFFFF" />
+            <ScrollViewer
+                Grid.Row="2"
+                PreviewMouseWheel="OnPreviewMouseWheel"
+                VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <controls:ImportExportSelectionControl
+                        x:Name="UserExportCtrl"
+                        Data="{Binding UserExportVariables}"
+                        Header="User"
+                        SelectionChanged="OnExportSelectionChanged"
+                        Visibility="{Binding Path=HasUserExportVariables, Converter={StaticResource BooleanToVisibilityHelper}}" />
+                    <controls:ImportExportSelectionControl
+                        x:Name="SystemExportCtrl"
+                        Data="{Binding SystemExportVariables}"
+                        Header="System"
+                        SelectionChanged="OnExportSelectionChanged"
+                        Visibility="{Binding Path=HasSystemExportVariables, Converter={StaticResource BooleanToVisibilityHelper}}" />
+                </StackPanel>
+            </ScrollViewer>
+            <TextBlock
+                Grid.Row="3"
+                Grid.ColumnSpan="2"
+                Margin="8,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Text="{Binding ExportStatus}" />
+            <Button
+                Grid.Row="3"
+                Width="100"
+                Height="32"
+                Margin="8,0"
+                HorizontalAlignment="Right"
+                Command="{Binding ExportCommand}"
+                Content="Export"
+                FontSize="14"
+                IsDefault="true" />
+        </Grid>
+        <Grid
+            x:Name="AboutGrid"
+            Grid.Column="1"
+            Visibility="{Binding CurrentAppMode, Converter={StaticResource ContentVisibilityHelper}, ConverterParameter=About}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48" />
+                <RowDefinition Height="48" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="48" />
+            </Grid.RowDefinitions>
+            <Rectangle
+                Grid.ColumnSpan="3"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Fill="#ff014292" />
+            <TextBlock
+                Margin="10,9,0,9"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="22"
+                Foreground="White"
+                Text="{Binding AppModeTitle}" />
+            <StackPanel
+                Grid.Row="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+                <Image
+                    Width="400"
+                    Height="128"
+                    Source="/NVMSharp;component/Resources/Images/nvmsharp_title.png" />
+                <TextBlock
+                    Margin="60,-25,-60,25"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="18"
+                    Text="version 2.1" />
+                <TextBlock
+                    Margin="0,-10,0,10"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="22"
+                    Text="© 2020 Ratish Philip" />
+            </StackPanel>
+        </Grid>
+        <wpfspark:FluidProgressBar
+            Grid.ColumnSpan="2"
+            Margin="0,44,0,-44"
+            VerticalAlignment="Top"
+            Foreground="White"
+            Visibility="{Binding Path=IsProgressVisible, Converter={StaticResource BooleanToVisibilityHelper}}" />
+        <Grid
+            x:Name="SplitViewMenu"
+            Grid.ColumnSpan="2"
+            Width="48"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Stretch"
+            Background="#F2F2F2"
+            ZIndex="4">
+            <StackPanel
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="#F2F2F2">
+                <!--  Menu (hamburger) button  -->
+                <RadioButton
+                    BorderThickness="0"
+                    Click="OnMenuButtonClicked"
+                    Style="{StaticResource SplitViewMenuButtonStyle}"
+                    Tag="Menu.Glyph" />
 
-                <!-- User button -->
-                <RadioButton x:Name="UserButton"
-                             Tag="User.Glyph"
-                             Content="User"
-                             Style="{StaticResource SplitViewNavButtonStyle}"
-                             Checked="OnViewUserVariables"
-                             BorderThickness="0"
-                             ToolTip="User" />
+                <!--  User button  -->
+                <RadioButton
+                    x:Name="UserButton"
+                    BorderThickness="0"
+                    Checked="OnViewUserVariables"
+                    Content="User"
+                    Style="{StaticResource SplitViewNavButtonStyle}"
+                    Tag="User.Glyph"
+                    ToolTip="User" />
 
-                <!-- System button -->
-                <RadioButton x:Name="SystemButton"
-                             Tag="System.Glyph"
-                             Content="System"
-                             Style="{StaticResource SplitViewNavButtonStyle}"
-                             Foreground="Black"
-                             Checked="OnViewSystemVariables"
-                             BorderThickness="0"
-                             ToolTip="System" />
+                <!--  System button  -->
+                <RadioButton
+                    x:Name="SystemButton"
+                    BorderThickness="0"
+                    Checked="OnViewSystemVariables"
+                    Content="System"
+                    Foreground="Black"
+                    Style="{StaticResource SplitViewNavButtonStyle}"
+                    Tag="System.Glyph"
+                    ToolTip="System" />
 
-                <!-- Import button -->
-                <RadioButton x:Name="ImportButton"
-                             Tag="Import.Glyph"
-                             Content="Import"
-                             Style="{StaticResource SplitViewNavButtonStyle}"
-                             Checked="OnImportVariables"
-                             BorderThickness="0"
-                             ToolTip="Import" />
+                <!--  Import button  -->
+                <RadioButton
+                    x:Name="ImportButton"
+                    BorderThickness="0"
+                    Checked="OnImportVariables"
+                    Content="Import"
+                    Style="{StaticResource SplitViewNavButtonStyle}"
+                    Tag="Import.Glyph"
+                    ToolTip="Import" />
 
-                <!-- Export button -->
-                <RadioButton x:Name="ExportButton"
-                             Tag="Export.Glyph"
-                             Content="Export"
-                             SnapsToDevicePixels="True"
-                             Style="{StaticResource SplitViewNavButtonStyle}"
-                             Checked="OnExportVariables"
-                             BorderThickness="0"
-                             ToolTip="Export" />
+                <!--  Export button  -->
+                <RadioButton
+                    x:Name="ExportButton"
+                    BorderThickness="0"
+                    Checked="OnExportVariables"
+                    Content="Export"
+                    SnapsToDevicePixels="True"
+                    Style="{StaticResource SplitViewNavButtonStyle}"
+                    Tag="Export.Glyph"
+                    ToolTip="Export" />
 
-                <!-- About button -->
-                <RadioButton x:Name="AboutButton"
-                             Tag="About.Glyph"
-                             Content="About"
-                             SnapsToDevicePixels="True"
-                             Style="{StaticResource SplitViewNavButtonStyle}"
-                             Checked="OnAboutButtonChecked"
-                             BorderThickness="0"
-                             ToolTip="About" />
+                <!--  About button  -->
+                <RadioButton
+                    x:Name="AboutButton"
+                    BorderThickness="0"
+                    Checked="OnAboutButtonChecked"
+                    Content="About"
+                    SnapsToDevicePixels="True"
+                    Style="{StaticResource SplitViewNavButtonStyle}"
+                    Tag="About.Glyph"
+                    ToolTip="About" />
             </StackPanel>
         </Grid>
     </Grid>

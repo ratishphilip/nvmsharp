@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2015 Ratish Philip 
+﻿// Copyright (c) 2020 Ratish Philip 
 //
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,13 +22,14 @@
 // SOFTWARE. 
 
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace NVMSharp.Services.Interfaces
 {
     public interface IFileService
     {
-        Task<string> ShowOpenFileDialogAsync(string title, string defaultExtension, params Tuple<string, string>[] extensions);
-        Task<string> ShowSaveFileDialogAsync(string title, string defaultExtension, params Tuple<string, string>[] extensions);
+        Task<string> ShowOpenFileDialogAsync(string title, string defaultExtension, params Tuple<string, List<string>>[] extensions);
+        Task<string> ShowSaveFileDialogAsync(string title, string defaultExtension, params Tuple<string, List<string>>[] extensions);
     }
 }

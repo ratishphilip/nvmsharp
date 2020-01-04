@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2015 Ratish Philip 
+﻿// Copyright (c) 2020 Ratish Philip 
 //
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -66,7 +66,7 @@ namespace NVMSharp.Common
     /// </summary>
     public static class Constants
     {
-        public const string VERSION = "2.0";
+        public const string VERSION = "2.1";
         public const string USER_ENV_SUBKEY = @"Environment";
         public const string SYSTEM_ENV_SUBKEY = @"SYSTEM\CurrentControlSet\Control\Session Manager\Environment";
         public const string SEPARATOR = ";";
