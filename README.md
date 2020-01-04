@@ -1,6 +1,9 @@
 <img alt="NVM# logo" src="https://cloud.githubusercontent.com/assets/7021835/10990698/d2952d18-840a-11e5-993b-228c089e3205.png" />
 
-NVM# is a Windows 10 desktop app (dot Net 4.6.2) which provides an effective way of managing the environment variables. 
+# Update (Jan 4, 2020)
+NVM# has been updated to dot Net Core 3.1!
+
+NVM# is a Windows 10 desktop app which provides an effective way of managing the environment variables. 
 
 Managing environment variables has been a tedious task since the early days of Windows. Windows 10 offers very little improvement on the way environment variables were managed (till Windows 8.1). However, I feel that the users should be provided with a better user experience for managing the environment variables. I strongly recommend that environment variables management be added to the Settings app in Windows 10 (coz that's where all the Control Panel features are going to be ultimately)
 
